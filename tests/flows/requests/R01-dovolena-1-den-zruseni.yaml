@@ -1,0 +1,37 @@
+appId: cz.demo.dochazka
+name: "Zadosti R01 - jednodenni dovolena odecte 1 den, zruseni ho vrati"
+tags:
+  - regression
+  - zadosti
+---
+- runScript: ../../scripts/dates.js
+- assertTrue:
+    condition: ${output.vacDay !== null}
+    label: "Letos je ještě pracovní den za 2 a více dní (koncem prosince není, testy se drží v aktuálním roce)"
+- runFlow: ../../subflows/start-as-jan.yaml
+- runFlow:
+    file: ../../subflows/capture-balance.yaml
+    env: {SLOT: before}
+- runFlow:
+    file: ../../subflows/submit-request.yaml
+    env: {TYPE: "Dovolená", FROM: "${output.vacDay}", TO: "${output.vacDay}"}
+- runFlow:
+    file: ../../subflows/capture-balance.yaml
+    env: {SLOT: submitted}
+- assertTrue:
+    condition: ${output.submitted - output.before == -1}
+    label: "Odeslání odečetlo 1 den"
+# Zrušit jde čekající žádost do dne před začátkem (odpověď firmy 20. 11.), žádost začíná nejdřív za 2 dny.
+- tapOn:
+    id: "request-cancel-.*"
+- assertVisible:
+    id: "request-state-.*"
+    text: "Zrušeno"
+    label: "Žádost je ve stavu Zrušeno"
+- runFlow:
+    file: ../../subflows/capture-balance.yaml
+    env: {SLOT: cancelled}
+- takeScreenshot: r01-po-zruseni
+- assertTrue:
+    condition: ${output.cancelled == output.before}
+    label: "Zrušení vrátilo den do zůstatku"

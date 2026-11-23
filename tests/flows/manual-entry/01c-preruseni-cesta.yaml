@@ -1,0 +1,32 @@
+appId: cz.demo.dochazka
+name: "Rucni zaznam 01c - Sluzebni cesta se neodecita (bod 7)"
+tags:
+  - regression
+  - vypocty
+---
+- runScript: ../../scripts/dates.js
+- runFlow: ../../subflows/start-as-jan.yaml
+# Služební cesta se podle bodu 7 počítá jako odpracovaný čas.
+# Nejdřív Práce 17:00–21:00 (kontrola, že měření funguje), pak jedno přerušení uvnitř.
+- runFlow:
+    file: ../../subflows/capture-day-total.yaml
+    env: {ISO: "${output.twoDaysAgoIso}", SLOT: before, EXPECT: any}
+- runFlow:
+    file: ../../subflows/add-manual-entry.yaml
+    env: {DATE: "${output.twoDaysAgo}", START: "17:00", END: "21:00", NOTE: "T01C-PRACE", TYPE: "Práce"}
+- runFlow:
+    file: ../../subflows/capture-day-total.yaml
+    env: {ISO: "${output.twoDaysAgoIso}", SLOT: work, EXPECT: exists}
+- assertTrue:
+    condition: ${output.work - output.before == 240}
+    label: "Práce přidala 4 h"
+- runFlow:
+    file: ../../subflows/add-manual-entry.yaml
+    env: {DATE: "${output.twoDaysAgo}", START: "19:00", END: "19:30", NOTE: "T01C-CESTA", TYPE: "Služební cesta"}
+- runFlow:
+    file: ../../subflows/capture-day-total.yaml
+    env: {ISO: "${output.twoDaysAgoIso}", SLOT: after, EXPECT: exists}
+- takeScreenshot: 01c-preruseni-cesta
+- assertTrue:
+    condition: ${output.after - output.work == 0}
+    label: "Služební cesta se neodečetla (přírůstek 0)"

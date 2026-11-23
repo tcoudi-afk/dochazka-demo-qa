@@ -1,0 +1,90 @@
+# Maestro regresní testy Docházka Demo na Android emulátoru.
+#
+# POZOR: KONCEPT. Tento workflow nebyl spuštěn ani ověřen. Testy byly zatím spouštěné jen lokálně
+# na Windows (emulátor Pixel 7, API 35). Před použitím ho je potřeba pustit a doladit.
+#
+# Co dělá:
+#   1. Java 17, Maestro 2.12.1, APK z releases repozitáře aplikace
+#   2. emulátor API 35 (reactivecircus/android-emulator-runner)
+#   3. sady flows/manual-entry, flows/requests, flows/login: testy bez known-bug (musí projít);
+#      potom všechny čtyři sady včetně flows/offline: known-bug testy (jen informace)
+#   4. JUnit reporty a výstupy Maestra jako artefakt běhu (soubor a složka pro každou sadu zvlášť)
+#
+# Runner i emulátor běží v UTC, takže dates.js (datum z počítače) a aplikace (datum z emulátoru)
+# se shodují. Pásmo emulátoru proto záměrně neměníme.
+
+name: Maestro – regresní testy
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - "tests/**"
+      - ".github/workflows/maestro.yml"
+
+jobs:
+  maestro:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+
+    steps:
+      - uses: actions/checkout@v4
+
+      # Hardwarová akcelerace pro emulátor na Linux runneru
+      - name: Zapnout KVM
+        run: |
+          echo 'KERNEL=="kvm", GROUP="kvm", MODE="0666", OPTIONS+="static_node=kvm"' | sudo tee /etc/udev/rules.d/99-kvm4all.rules
+          sudo udevadm control --reload-rules
+          sudo udevadm trigger --name-match=kvm
+
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: "17"
+
+      - name: Instalace Maestro
+        run: |
+          export MAESTRO_VERSION=2.12.1
+          curl -fsSL "https://get.maestro.mobile.dev" | bash
+          echo "$HOME/.maestro/bin" >> "$GITHUB_PATH"
+
+      # TODO: ověřit název APK v releases a případně zafixovat konkrétní tag místo posledního release
+      - name: Stažení APK
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          mkdir -p app
+          gh release download --repo BiLLGcz/dochazka-demo --pattern "*.apk" --dir app
+          ls -l app
+
+      - name: Testy na emulátoru
+        uses: reactivecircus/android-emulator-runner@v2
+        with:
+          api-level: 35
+          target: google_apis
+          arch: x86_64
+          profile: pixel_7
+          emulator-options: -no-window -gpu swiftshader_indirect -noaudio -no-boot-anim
+          disable-animations: true
+          # Každý řádek skriptu běží zvlášť, proto je vše v jednom volání bash.
+          # Testy bez known-bug určují výsledek jobu (stačí jedna sada červená), known-bug se jen uloží.
+          # Všechny sady doběhnou vždy, i když některá selže.
+          # flows/offline má zatím jen known-bug test (O01), proto běží jen v běhu known-bug.
+          # flows/login trvá několik minut (L03 čeká přes 65 s).
+          script: >-
+            bash -c 'adb install -r app/*.apk || exit 1; mkdir -p reports; cd tests || exit 1; rc=0;
+            for s in manual-entry requests login; do
+            maestro test --exclude-tags known-bug --format junit --output ../reports/regression-$s.xml --test-output-dir ../reports/regression-$s flows/$s || rc=1;
+            done;
+            for s in manual-entry requests offline login; do
+            maestro test --include-tags known-bug --format junit --output ../reports/known-bug-$s.xml --test-output-dir ../reports/known-bug-$s flows/$s || true;
+            done;
+            exit $rc'
+
+      - name: Uložení reportů
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: maestro-reports
+          path: reports/
+          if-no-files-found: warn

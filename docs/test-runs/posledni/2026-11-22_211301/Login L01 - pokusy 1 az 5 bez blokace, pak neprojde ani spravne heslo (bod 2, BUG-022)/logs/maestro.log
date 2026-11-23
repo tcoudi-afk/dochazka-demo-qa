@@ -1,0 +1,265 @@
+21:13:07.420 [ INFO] maestro.cli.runner.CliConsoleListener.onCommandStart: Define variables RUNNING
+21:13:07.424 [ INFO] maestro.cli.runner.CliConsoleListener.onCommandFinished: Define variables COMPLETED
+21:13:07.425 [ INFO] maestro.cli.runner.CliConsoleListener.onCommandStart: Apply configuration RUNNING
+21:13:07.425 [ INFO] maestro.cli.runner.CliConsoleListener.onCommandFinished: Apply configuration COMPLETED
+21:13:07.426 [ INFO] maestro.cli.runner.CliConsoleListener.onCommandStart: Launch app "cz.demo.dochazka" with clear state RUNNING
+21:13:07.428 [ INFO] maestro.Maestro.clearAppState$lambda$9: Clearing app state cz.demo.dochazka
+21:13:08.506 [ INFO] maestro.Maestro.launchApp$lambda$6: Launching app cz.demo.dochazka
+21:13:08.506 [ INFO] maestro.Maestro.launchApp$lambda$6: Stopping cz.demo.dochazka app during launch
+21:13:08.639 [ INFO] maestro.cli.runner.CliConsoleListener.onCommandFinished: Launch app "cz.demo.dochazka" with clear state COMPLETED
+21:13:08.639 [ INFO] maestro.cli.runner.CliConsoleListener.onCommandStart: Run ${output.blockedAt = 0} RUNNING
+21:13:09.633 [ INFO] maestro.cli.runner.CliConsoleListener.onCommandFinished: Run ${output.blockedAt = 0} COMPLETED
+21:13:09.633 [ INFO] maestro.cli.runner.CliConsoleListener.onCommandStart: Run ../../subflows/login-attempt.yaml RUNNING
+21:13:09.637 [ INFO] maestro.cli.runner.CliConsoleListener.onCommandStart: Define variables RUNNING
+21:13:09.637 [ INFO] maestro.cli.runner.CliConsoleListener.onCommandFinished: Define variables COMPLETED
+21:13:09.638 [ INFO] maestro.cli.runner.CliConsoleListener.onCommandStart: Apply configuration RUNNING
+21:13:09.638 [ INFO] maestro.cli.runner.CliConsoleListener.onCommandFinished: Apply configuration COMPLETED
+21:13:09.638 [ INFO] maestro.cli.runner.CliConsoleListener.onCommandStart: Run login-fill.yaml RUNNING
+21:13:09.640 [ INFO] maestro.cli.runner.CliConsoleListener.onCommandStart: Define variables RUNNING
+21:13:09.649 [ INFO] maestro.cli.runner.CliConsoleListener.onCommandFinished: Define variables COMPLETED
+21:13:09.649 [ INFO] maestro.cli.runner.CliConsoleListener.onCommandStart: Apply configuration RUNNING
+21:13:09.649 [ INFO] maestro.cli.runner.CliConsoleListener.onCommandFinished: Apply configuration COMPLETED
+21:13:09.650 [ INFO] maestro.cli.runner.CliConsoleListener.onCommandStart: Assert that id: login-submit is visible RUNNING
+21:13:10.389 [ INFO] maestro.cli.runner.CliConsoleListener.onCommandFinished: Assert that id: login-submit is visible COMPLETED
+21:13:10.390 [ INFO] maestro.cli.runner.CliConsoleListener.onCommandStart: Tap on id: login-email RUNNING
+21:13:10.487 [ INFO] maestro.Maestro.tap-HgV9Ck0: Tapping on element:  UiElement(treeNode=TreeNode(attributes={text=, accessibilityText=E-mail, hintText=, ignoreBoundsFiltering=false, resource-id=login-email, clickable=true, bounds=[105,641][975,767], enabled=true, focused=false, checked=false, scrollable=false, selected=false, class=android.widget.EditText, important-for-accessibility=true, error=}, children=[], clickable=true, enabled=true, focused=false, checked=false, selected=false), bounds=Bounds(x=105, y=641, width=870, height=126))
+21:13:11.720 [ INFO] maestro.Maestro.tap-HgV9Ck0: Tap aimed via settled hierarchy
+21:13:11.725 [ INFO] maestro.Maestro.hierarchyBasedTap-ogj28Uc: Tapping at (540, 704) using hierarchy based logic for wait
+21:13:13.167 [ INFO] maestro.Maestro.hierarchyBasedTap-ogj28Uc: Something has changed in the UI judging by view hierarchy. Proceed.
+21:13:13.167 [ INFO] maestro.cli.runner.CliConsoleListener.onCommandFinished: Tap on id: login-email COMPLETED
+21:13:13.167 [ INFO] maestro.cli.runner.CliConsoleListener.onCommandStart: Erase 60 characters RUNNING
+21:13:13.170 [ INFO] maestro.Maestro.eraseText$lambda$53: Erasing 60 characters
+21:13:15.475 [ INFO] maestro.cli.runner.CliConsoleListener.onCommandFinished: Erase 60 characters COMPLETED
+21:13:15.475 [ INFO] maestro.cli.runner.CliConsoleListener.onCommandStart: Input text ${EMAIL} RUNNING
+21:13:15.480 [ INFO] maestro.Maestro.inputText: Inputting text: jan.novak@demo.cz
+21:13:18.105 [ INFO] maestro.cli.runner.CliConsoleListener.onCommandFinished: Input text ${EMAIL} COMPLETED
+21:13:18.106 [ INFO] maestro.cli.runner.CliConsoleListener.onCommandStart: Tap on id: login-password RUNNING
+21:13:18.190 [ INFO] maestro.Maestro.tap-HgV9Ck0: Tapping on element:  UiElement(treeNode=TreeNode(attributes={text=, accessibilityText=Heslo, hintText=, ignoreBoundsFiltering=false, resource-id=login-password, clickable=true, bounds=[105,860][975,986], enabled=true, focused=false, checked=false, scrollable=false, selected=false, class=android.widget.EditText, important-for-accessibility=true, error=}, children=[], clickable=true, enabled=true, focused=false, checked=false, selected=false), bounds=Bounds(x=105, y=860, width=870, height=126))
+21:13:19.403 [ INFO] maestro.Maestro.tap-HgV9Ck0: Tap aimed via settled hierarchy
+21:13:19.404 [ INFO] maestro.Maestro.hierarchyBasedTap-ogj28Uc: Tapping at (540, 923) using hierarchy based logic for wait
+21:13:20.943 [ INFO] maestro.Maestro.hierarchyBasedTap-ogj28Uc: Something has changed in the UI judging by view hierarchy. Proceed.
+21:13:20.943 [ INFO] maestro.cli.runner.CliConsoleListener.onCommandFinished: Tap on id: login-password COMPLETED
+21:13:20.943 [ INFO] maestro.cli.runner.CliConsoleListener.onCommandStart: Erase 60 characters RUNNING
+21:13:20.944 [ INFO] maestro.Maestro.eraseText$lambda$53: Erasing 60 characters
+21:13:23.256 [ INFO] maestro.cli.runner.CliConsoleListener.onCommandFinished: Erase 60 characters COMPLETED
+21:13:23.256 [ INFO] maestro.cli.runner.CliConsoleListener.onCommandStart: Input text ${PASSWORD} RUNNING
+21:13:23.258 [ INFO] maestro.Maestro.inputText: Inputting text: Spatne1!
+21:13:24.891 [ INFO] maestro.cli.runner.CliConsoleListener.onCommandFinished: Input text ${PASSWORD} COMPLETED
+21:13:24.891 [ INFO] maestro.cli.runner.CliConsoleListener.onCommandStart: Hide Keyboard RUNNING
+21:13:24.894 [ INFO] maestro.Maestro.hideKeyboard$lambda$13: Hiding Keyboard
+21:13:25.983 [ INFO] maestro.cli.runner.CliConsoleListener.onCommandFinished: Hide Keyboard COMPLETED
+21:13:25.983 [ INFO] maestro.cli.runner.CliConsoleListener.onCommandFinished: Run login-fill.yaml COMPLETED
+21:13:25.983 [ INFO] maestro.cli.runner.CliConsoleListener.onCommandStart: Run login-submit-record.yaml RUNNING
+21:13:25.984 [ INFO] maestro.cli.runner.CliConsoleListener.onCommandStart: Define variables RUNNING
+21:13:25.987 [ INFO] maestro.cli.runner.CliConsoleListener.onCommandFinished: Define variables COMPLETED
+21:13:25.987 [ INFO] maestro.cli.runner.CliConsoleListener.onCommandStart: Apply configuration RUNNING
+21:13:25.987 [ INFO] maestro.cli.runner.CliConsoleListener.onCommandFinished: Apply configuration COMPLETED
+21:13:25.987 [ INFO] maestro.cli.runner.CliConsoleListener.onCommandStart: Tap on id: login-submit RUNNING
+21:13:26.062 [ INFO] maestro.Maestro.tap-HgV9Ck0: Tapping on element:  UiElement(treeNode=TreeNode(attributes={text=, accessibilityText=Přihlásit, hintText=, ignoreBoundsFiltering=false, resource-id=login-submit, clickable=true, bounds=[105,1018][975,1144], enabled=true, focused=false, checked=false, scrollable=false, selected=false, class=android.widget.Button, important-for-accessibility=true, error=}, children=[TreeNode(attributes={text=Přihlásit, accessibilityText=, hintText=, ignoreBoundsFiltering=false, resource-id=, clickable=false, bounds=[461,1052][618,1109], enabled=true, focused=false, checked=false, scrollable=false, selected=false, class=android.widget.TextView, important-for-accessibility=false, error=}, children=[], clickable=false, enabled=true, focused=false, checked=false, selected=false)], clickable=true, enabled=true, focused=false, checked=false, selected=false), bounds=Bounds(x=105, y=1018, width=870, height=126))
+21:13:27.269 [ INFO] maestro.Maestro.tap-HgV9Ck0: Tap aimed via settled hierarchy
+21:13:27.272 [ INFO] maestro.Maestro.hierarchyBasedTap-ogj28Uc: Tapping at (540, 1081) using hierarchy based logic for wait
+21:13:28.166 [ INFO] maestro.Maestro.hierarchyBasedTap-ogj28Uc: Something has changed in the UI judging by view hierarchy. Proceed.
+21:13:28.166 [ INFO] maestro.cli.runner.CliConsoleListener.onCommandFinished: Tap on id: login-submit COMPLETED
+21:13:28.166 [ INFO] maestro.cli.runner.CliConsoleListener.onCommandStart: Run ${output.lastSubmitAt = Date.now()} RUNNING
+21:13:28.173 [ INFO] maestro.cli.runner.CliConsoleListener.onCommandFinished: Run ${output.lastSubmitAt = Date.now()} COMPLETED
+21:13:28.173 [ INFO] maestro.cli.runner.CliConsoleListener.onCommandStart: Run ${output.lastError = ''} RUNNING
+21:13:28.176 [ INFO] maestro.cli.runner.CliConsoleListener.onCommandFinished: Run ${output.lastError = ''} COMPLETED
+21:13:28.176 [ INFO] maestro.cli.runner.CliConsoleListener.onCommandStart: Čekání na výsledek přihlášení, max 5 s (varování = není vidět hláška ani tab) RUNNING
+21:13:28.254 [ INFO] maestro.cli.runner.CliConsoleListener.onCommandFinished: Čekání na výsledek přihlášení, max 5 s (varování = není vidět hláška ani tab) COMPLETED
+21:13:28.254 [ INFO] maestro.cli.runner.CliConsoleListener.onCommandStart: Take screenshot ${SHOT} RUNNING
+21:13:28.260 [ INFO] maestro.Maestro.takeScreenshot: Taking screenshot
+21:13:28.263 [TRACE] maestro.utils.ScreenshotUtils.takeScreenshot: Taking screenshot to output sink
+21:13:28.546 [ INFO] maestro.cli.runner.CliConsoleListener.onCommandFinished: Take screenshot ${SHOT} COMPLETED
+21:13:28.546 [ INFO] maestro.cli.runner.CliConsoleListener.onCommandStart: Run flow when id: login-error is visible RUNNING
+21:13:28.581 [ INFO] maestro.cli.runner.CliConsoleListener.onCommandStart: Copy text from element with id: login-error RUNNING
+21:13:28.657 [ INFO] maestro.cli.runner.CliConsoleListener.onCommandFinished: Copy text from element with id: login-error COMPLETED
+21:13:28.657 [ INFO] maestro.cli.runner.CliConsoleListener.onCommandStart: Run ${output.lastError = maestro.copiedText} RUNNING
+21:13:28.661 [ INFO] maestro.cli.runner.CliConsoleListener.onCommandFinished: Run ${output.lastError = maestro.copiedText} COMPLETED
+21:13:28.661 [ INFO] maestro.cli.runner.CliConsoleListener.onCommandFinished: Run flow when id: login-error is visible COMPLETED
+21:13:28.662 [ INFO] maestro.cli.runner.CliConsoleListener.onCommandStart: Run ${output.blockedAt = (!output.blockedAt && output.lastError.indexOf('zablokované') >= 0) ? output.lastSubmitAt : output.blockedAt} RUNNING
+21:13:28.676 [ INFO] maestro.cli.runner.CliConsoleListener.onCommandFinished: Run ${output.blockedAt = (!output.blockedAt && output.lastError.indexOf('zablokované') >= 0) ? output.lastSubmitAt : output.blockedAt} COMPLETED
+21:13:28.676 [ INFO] maestro.cli.runner.CliConsoleListener.onCommandStart: Run ${console.log('[LOGIN] ' + SHOT + (output.blockedAt ? ' | ' + Math.round((output.lastSubmitAt - output.blockedAt) / 1000) + ' s od začátku blokace' : '') + ' | ' + (output.lastError ? 'login-error = ' + output.lastError : 'login-error není vidět'))} RUNNING
+21:13:28.684 [ INFO] maestro.orchestra.Orchestra.executeCommands$lambda$26$lambda$24: JsConsole: [LOGIN] l01-spatne-1 | login-error = Nesprávný e-mail nebo heslo.
+21:13:28.686 [ INFO] maestro.cli.runner.CliConsoleListener.onCommandFinished: Run ${console.log('[LOGIN] ' + SHOT + (output.blockedAt ? ' | ' + Math.round((output.lastSubmitAt - output.blockedAt) / 1000) + ' s od začátku blokace' : '') + ' | ' + (output.lastError ? 'login-error = ' + output.lastError : 'login-error není vidět'))} COMPLETED
+21:13:28.686 [ INFO] maestro.cli.runner.CliConsoleListener.onCommandFinished: Run login-submit-record.yaml COMPLETED
+21:13:28.686 [ INFO] maestro.cli.runner.CliConsoleListener.onCommandFinished: Run ../../subflows/login-attempt.yaml COMPLETED
+21:13:28.686 [ INFO] maestro.cli.runner.CliConsoleListener.onCommandStart: Run ../../subflows/expect-logged-out.yaml RUNNING
+21:13:28.687 [ INFO] maestro.cli.runner.CliConsoleListener.onCommandStart: Apply configuration RUNNING
+21:13:28.687 [ INFO] maestro.cli.runner.CliConsoleListener.onCommandFinished: Apply configuration COMPLETED
+21:13:28.687 [ INFO] maestro.cli.runner.CliConsoleListener.onCommandStart: Nepřihlášen (přihlašovací formulář je vidět) RUNNING
+21:13:28.763 [ INFO] maestro.cli.runner.CliConsoleListener.onCommandFinished: Nepřihlášen (přihlašovací formulář je vidět) COMPLETED
+21:13:28.763 [ INFO] maestro.cli.runner.CliConsoleListener.onCommandStart: Nepřihlášen (taby aplikace nejsou vidět) RUNNING
+21:13:29.309 [ INFO] maestro.cli.runner.CliConsoleListener.onCommandFinished: Nepřihlášen (taby aplikace nejsou vidět) COMPLETED
+21:13:29.310 [ INFO] maestro.cli.runner.CliConsoleListener.onCommandFinished: Run ../../subflows/expect-logged-out.yaml COMPLETED
+21:13:29.310 [ INFO] maestro.cli.runner.CliConsoleListener.onCommandStart: Pokus 1 bez blokace RUNNING
+21:13:29.313 [ INFO] maestro.cli.runner.CliConsoleListener.onCommandFinished: Pokus 1 bez blokace COMPLETED
+21:13:29.313 [ INFO] maestro.cli.runner.CliConsoleListener.onCommandStart: Run ../../subflows/login-attempt.yaml RUNNING
+21:13:29.315 [ INFO] maestro.cli.runner.CliConsoleListener.onCommandStart: Define variables RUNNING
+21:13:29.315 [ INFO] maestro.cli.runner.CliConsoleListener.onCommandFinished: Define variables COMPLETED
+21:13:29.315 [ INFO] maestro.cli.runner.CliConsoleListener.onCommandStart: Apply configuration RUNNING
+21:13:29.315 [ INFO] maestro.cli.runner.CliConsoleListener.onCommandFinished: Apply configuration COMPLETED
+21:13:29.315 [ INFO] maestro.cli.runner.CliConsoleListener.onCommandStart: Run login-fill.yaml RUNNING
+21:13:29.319 [ INFO] maestro.cli.runner.CliConsoleListener.onCommandStart: Define variables RUNNING
+21:13:29.323 [ INFO] maestro.cli.runner.CliConsoleListener.onCommandFinished: Define variables COMPLETED
+21:13:29.324 [ INFO] maestro.cli.runner.CliConsoleListener.onCommandStart: Apply configuration RUNNING
+21:13:29.324 [ INFO] maestro.cli.runner.CliConsoleListener.onCommandFinished: Apply configuration COMPLETED
+21:13:29.324 [ INFO] maestro.cli.runner.CliConsoleListener.onCommandStart: Assert that id: login-submit is visible RUNNING
+21:13:29.358 [ INFO] maestro.cli.runner.CliConsoleListener.onCommandFinished: Assert that id: login-submit is visible COMPLETED
+21:13:29.359 [ INFO] maestro.cli.runner.CliConsoleListener.onCommandStart: Tap on id: login-email RUNNING
+21:13:29.395 [ INFO] maestro.Maestro.tap-HgV9Ck0: Tapping on element:  UiElement(treeNode=TreeNode(attributes={text=jan.novak@demo.cz, accessibilityText=E-mail, hintText=, ignoreBoundsFiltering=false, resource-id=login-email, clickable=true, bounds=[105,641][975,767], enabled=true, focused=false, checked=false, scrollable=false, selected=false, class=android.widget.EditText, important-for-accessibility=true, error=}, children=[], clickable=true, enabled=true, focused=false, checked=false, selected=false), bounds=Bounds(x=105, y=641, width=870, height=126))
+21:13:30.552 [ INFO] maestro.Maestro.tap-HgV9Ck0: Tap aimed via settled hierarchy
+21:13:30.555 [ INFO] maestro.Maestro.hierarchyBasedTap-ogj28Uc: Tapping at (540, 704) using hierarchy based logic for wait
+21:13:32.227 [ INFO] maestro.Maestro.hierarchyBasedTap-ogj28Uc: Something has changed in the UI judging by view hierarchy. Proceed.
+21:13:32.227 [ INFO] maestro.cli.runner.CliConsoleListener.onCommandFinished: Tap on id: login-email COMPLETED
+21:13:32.227 [ INFO] maestro.cli.runner.CliConsoleListener.onCommandStart: Erase 60 characters RUNNING
+21:13:32.228 [ INFO] maestro.Maestro.eraseText$lambda$53: Erasing 60 characters
+21:13:35.280 [ INFO] maestro.cli.runner.CliConsoleListener.onCommandFinished: Erase 60 characters COMPLETED
+21:13:35.281 [ INFO] maestro.cli.runner.CliConsoleListener.onCommandStart: Input text ${EMAIL} RUNNING
+21:13:35.282 [ INFO] maestro.Maestro.inputText: Inputting text: jan.novak@demo.cz
+21:13:37.903 [ INFO] maestro.cli.runner.CliConsoleListener.onCommandFinished: Input text ${EMAIL} COMPLETED
+21:13:37.903 [ INFO] maestro.cli.runner.CliConsoleListener.onCommandStart: Tap on id: login-password RUNNING
+21:13:37.990 [ INFO] maestro.Maestro.tap-HgV9Ck0: Tapping on element:  UiElement(treeNode=TreeNode(attributes={text=••••••••, accessibilityText=Heslo, hintText=, ignoreBoundsFiltering=false, resource-id=login-password, clickable=true, bounds=[105,860][975,986], enabled=true, focused=false, checked=false, scrollable=false, selected=false, class=android.widget.EditText, important-for-accessibility=true, error=}, children=[], clickable=true, enabled=true, focused=false, checked=false, selected=false), bounds=Bounds(x=105, y=860, width=870, height=126))
+21:13:39.201 [ INFO] maestro.Maestro.tap-HgV9Ck0: Tap aimed via settled hierarchy
+21:13:39.204 [ INFO] maestro.Maestro.hierarchyBasedTap-ogj28Uc: Tapping at (540, 923) using hierarchy based logic for wait
+21:13:40.874 [ INFO] maestro.Maestro.hierarchyBasedTap-ogj28Uc: Something has changed in the UI judging by view hierarchy. Proceed.
+21:13:40.874 [ INFO] maestro.cli.runner.CliConsoleListener.onCommandFinished: Tap on id: login-password COMPLETED
+21:13:40.874 [ INFO] maestro.cli.runner.CliConsoleListener.onCommandStart: Erase 60 characters RUNNING
+21:13:40.875 [ INFO] maestro.Maestro.eraseText$lambda$53: Erasing 60 characters
+21:13:43.338 [ INFO] maestro.cli.runner.CliConsoleListener.onCommandFinished: Erase 60 characters COMPLETED
+21:13:43.338 [ INFO] maestro.cli.runner.CliConsoleListener.onCommandStart: Input text ${PASSWORD} RUNNING
+21:13:43.341 [ INFO] maestro.Maestro.inputText: Inputting text: Spatne2!
+21:13:45.150 [ INFO] maestro.cli.runner.CliConsoleListener.onCommandFinished: Input text ${PASSWORD} COMPLETED
+21:13:45.150 [ INFO] maestro.cli.runner.CliConsoleListener.onCommandStart: Hide Keyboard RUNNING
+21:13:45.151 [ INFO] maestro.Maestro.hideKeyboard$lambda$13: Hiding Keyboard
+21:13:46.112 [ INFO] maestro.cli.runner.CliConsoleListener.onCommandFinished: Hide Keyboard COMPLETED
+21:13:46.112 [ INFO] maestro.cli.runner.CliConsoleListener.onCommandFinished: Run login-fill.yaml COMPLETED
+21:13:46.112 [ INFO] maestro.cli.runner.CliConsoleListener.onCommandStart: Run login-submit-record.yaml RUNNING
+21:13:46.113 [ INFO] maestro.cli.runner.CliConsoleListener.onCommandStart: Define variables RUNNING
+21:13:46.115 [ INFO] maestro.cli.runner.CliConsoleListener.onCommandFinished: Define variables COMPLETED
+21:13:46.115 [ INFO] maestro.cli.runner.CliConsoleListener.onCommandStart: Apply configuration RUNNING
+21:13:46.115 [ INFO] maestro.cli.runner.CliConsoleListener.onCommandFinished: Apply configuration COMPLETED
+21:13:46.115 [ INFO] maestro.cli.runner.CliConsoleListener.onCommandStart: Tap on id: login-submit RUNNING
+21:13:46.189 [ INFO] maestro.Maestro.tap-HgV9Ck0: Tapping on element:  UiElement(treeNode=TreeNode(attributes={text=, accessibilityText=Přihlásit, hintText=, ignoreBoundsFiltering=false, resource-id=login-submit, clickable=true, bounds=[105,1104][975,1230], enabled=true, focused=false, checked=false, scrollable=false, selected=false, class=android.widget.Button, important-for-accessibility=true, error=}, children=[TreeNode(attributes={text=Přihlásit, accessibilityText=, hintText=, ignoreBoundsFiltering=false, resource-id=, clickable=false, bounds=[461,1138][618,1195], enabled=true, focused=false, checked=false, scrollable=false, selected=false, class=android.widget.TextView, important-for-accessibility=false, error=}, children=[], clickable=false, enabled=true, focused=false, checked=false, selected=false)], clickable=true, enabled=true, focused=false, checked=false, selected=false), bounds=Bounds(x=105, y=1104, width=870, height=126))
+21:13:47.360 [ INFO] maestro.Maestro.tap-HgV9Ck0: Tap aimed via settled hierarchy
+21:13:47.362 [ INFO] maestro.Maestro.hierarchyBasedTap-ogj28Uc: Tapping at (540, 1167) using hierarchy based logic for wait
+21:13:48.229 [ INFO] maestro.cli.runner.CliConsoleListener.onCommandFinished: Tap on id: login-submit COMPLETED
+21:13:48.229 [ INFO] maestro.cli.runner.CliConsoleListener.onCommandStart: Run ${output.lastSubmitAt = Date.now()} RUNNING
+21:13:48.231 [ INFO] maestro.cli.runner.CliConsoleListener.onCommandFinished: Run ${output.lastSubmitAt = Date.now()} COMPLETED
+21:13:48.231 [ INFO] maestro.cli.runner.CliConsoleListener.onCommandStart: Run ${output.lastError = ''} RUNNING
+21:13:48.232 [ INFO] maestro.cli.runner.CliConsoleListener.onCommandFinished: Run ${output.lastError = ''} COMPLETED
+21:13:48.232 [ INFO] maestro.cli.runner.CliConsoleListener.onCommandStart: Čekání na výsledek přihlášení, max 5 s (varování = není vidět hláška ani tab) RUNNING
+21:13:48.305 [ INFO] maestro.cli.runner.CliConsoleListener.onCommandFinished: Čekání na výsledek přihlášení, max 5 s (varování = není vidět hláška ani tab) COMPLETED
+21:13:48.306 [ INFO] maestro.cli.runner.CliConsoleListener.onCommandStart: Take screenshot ${SHOT} RUNNING
+21:13:48.309 [ INFO] maestro.Maestro.takeScreenshot: Taking screenshot
+21:13:48.310 [TRACE] maestro.utils.ScreenshotUtils.takeScreenshot: Taking screenshot to output sink
+21:13:48.483 [ INFO] maestro.cli.runner.CliConsoleListener.onCommandFinished: Take screenshot ${SHOT} COMPLETED
+21:13:48.484 [ INFO] maestro.cli.runner.CliConsoleListener.onCommandStart: Run flow when id: login-error is visible RUNNING
+21:13:48.558 [ INFO] maestro.cli.runner.CliConsoleListener.onCommandStart: Copy text from element with id: login-error RUNNING
+21:13:48.630 [ INFO] maestro.cli.runner.CliConsoleListener.onCommandFinished: Copy text from element with id: login-error COMPLETED
+21:13:48.630 [ INFO] maestro.cli.runner.CliConsoleListener.onCommandStart: Run ${output.lastError = maestro.copiedText} RUNNING
+21:13:48.632 [ INFO] maestro.cli.runner.CliConsoleListener.onCommandFinished: Run ${output.lastError = maestro.copiedText} COMPLETED
+21:13:48.633 [ INFO] maestro.cli.runner.CliConsoleListener.onCommandFinished: Run flow when id: login-error is visible COMPLETED
+21:13:48.633 [ INFO] maestro.cli.runner.CliConsoleListener.onCommandStart: Run ${output.blockedAt = (!output.blockedAt && output.lastError.indexOf('zablokované') >= 0) ? output.lastSubmitAt : output.blockedAt} RUNNING
+21:13:48.635 [ INFO] maestro.cli.runner.CliConsoleListener.onCommandFinished: Run ${output.blockedAt = (!output.blockedAt && output.lastError.indexOf('zablokované') >= 0) ? output.lastSubmitAt : output.blockedAt} COMPLETED
+21:13:48.635 [ INFO] maestro.cli.runner.CliConsoleListener.onCommandStart: Run ${console.log('[LOGIN] ' + SHOT + (output.blockedAt ? ' | ' + Math.round((output.lastSubmitAt - output.blockedAt) / 1000) + ' s od začátku blokace' : '') + ' | ' + (output.lastError ? 'login-error = ' + output.lastError : 'login-error není vidět'))} RUNNING
+21:13:48.638 [ INFO] maestro.orchestra.Orchestra.executeCommands$lambda$26$lambda$24: JsConsole: [LOGIN] l01-spatne-2 | login-error = Nesprávný e-mail nebo heslo.
+21:13:48.638 [ INFO] maestro.cli.runner.CliConsoleListener.onCommandFinished: Run ${console.log('[LOGIN] ' + SHOT + (output.blockedAt ? ' | ' + Math.round((output.lastSubmitAt - output.blockedAt) / 1000) + ' s od začátku blokace' : '') + ' | ' + (output.lastError ? 'login-error = ' + output.lastError : 'login-error není vidět'))} COMPLETED
+21:13:48.638 [ INFO] maestro.cli.runner.CliConsoleListener.onCommandFinished: Run login-submit-record.yaml COMPLETED
+21:13:48.638 [ INFO] maestro.cli.runner.CliConsoleListener.onCommandFinished: Run ../../subflows/login-attempt.yaml COMPLETED
+21:13:48.638 [ INFO] maestro.cli.runner.CliConsoleListener.onCommandStart: Run ../../subflows/expect-logged-out.yaml RUNNING
+21:13:48.639 [ INFO] maestro.cli.runner.CliConsoleListener.onCommandStart: Apply configuration RUNNING
+21:13:48.639 [ INFO] maestro.cli.runner.CliConsoleListener.onCommandFinished: Apply configuration COMPLETED
+21:13:48.639 [ INFO] maestro.cli.runner.CliConsoleListener.onCommandStart: Nepřihlášen (přihlašovací formulář je vidět) RUNNING
+21:13:48.713 [ INFO] maestro.cli.runner.CliConsoleListener.onCommandFinished: Nepřihlášen (přihlašovací formulář je vidět) COMPLETED
+21:13:48.713 [ INFO] maestro.cli.runner.CliConsoleListener.onCommandStart: Nepřihlášen (taby aplikace nejsou vidět) RUNNING
+21:13:49.337 [ INFO] maestro.cli.runner.CliConsoleListener.onCommandFinished: Nepřihlášen (taby aplikace nejsou vidět) COMPLETED
+21:13:49.337 [ INFO] maestro.cli.runner.CliConsoleListener.onCommandFinished: Run ../../subflows/expect-logged-out.yaml COMPLETED
+21:13:49.337 [ INFO] maestro.cli.runner.CliConsoleListener.onCommandStart: Pokus 2 bez blokace RUNNING
+21:13:49.340 [ INFO] maestro.cli.runner.CliConsoleListener.onCommandFinished: Pokus 2 bez blokace COMPLETED
+21:13:49.340 [ INFO] maestro.cli.runner.CliConsoleListener.onCommandStart: Run ../../subflows/login-attempt.yaml RUNNING
+21:13:49.342 [ INFO] maestro.cli.runner.CliConsoleListener.onCommandStart: Define variables RUNNING
+21:13:49.342 [ INFO] maestro.cli.runner.CliConsoleListener.onCommandFinished: Define variables COMPLETED
+21:13:49.342 [ INFO] maestro.cli.runner.CliConsoleListener.onCommandStart: Apply configuration RUNNING
+21:13:49.342 [ INFO] maestro.cli.runner.CliConsoleListener.onCommandFinished: Apply configuration COMPLETED
+21:13:49.342 [ INFO] maestro.cli.runner.CliConsoleListener.onCommandStart: Run login-fill.yaml RUNNING
+21:13:49.344 [ INFO] maestro.cli.runner.CliConsoleListener.onCommandStart: Define variables RUNNING
+21:13:49.347 [ INFO] maestro.cli.runner.CliConsoleListener.onCommandFinished: Define variables COMPLETED
+21:13:49.347 [ INFO] maestro.cli.runner.CliConsoleListener.onCommandStart: Apply configuration RUNNING
+21:13:49.347 [ INFO] maestro.cli.runner.CliConsoleListener.onCommandFinished: Apply configuration COMPLETED
+21:13:49.347 [ INFO] maestro.cli.runner.CliConsoleListener.onCommandStart: Assert that id: login-submit is visible RUNNING
+21:13:49.378 [ INFO] maestro.cli.runner.CliConsoleListener.onCommandFinished: Assert that id: login-submit is visible COMPLETED
+21:13:49.379 [ INFO] maestro.cli.runner.CliConsoleListener.onCommandStart: Tap on id: login-email RUNNING
+21:13:49.411 [ INFO] maestro.Maestro.tap-HgV9Ck0: Tapping on element:  UiElement(treeNode=TreeNode(attributes={text=jan.novak@demo.cz, accessibilityText=E-mail, hintText=, ignoreBoundsFiltering=false, resource-id=login-email, clickable=true, bounds=[105,641][975,767], enabled=true, focused=false, checked=false, scrollable=false, selected=false, class=android.widget.EditText, important-for-accessibility=true, error=}, children=[], clickable=true, enabled=true, focused=false, checked=false, selected=false), bounds=Bounds(x=105, y=641, width=870, height=126))
+21:13:50.570 [ INFO] maestro.Maestro.tap-HgV9Ck0: Tap aimed via settled hierarchy
+21:13:50.573 [ INFO] maestro.Maestro.hierarchyBasedTap-ogj28Uc: Tapping at (540, 704) using hierarchy based logic for wait
+21:13:52.147 [ INFO] maestro.Maestro.hierarchyBasedTap-ogj28Uc: Something has changed in the UI judging by view hierarchy. Proceed.
+21:13:52.148 [ INFO] maestro.cli.runner.CliConsoleListener.onCommandFinished: Tap on id: login-email COMPLETED
+21:13:52.148 [ INFO] maestro.cli.runner.CliConsoleListener.onCommandStart: Erase 60 characters RUNNING
+21:13:52.149 [ INFO] maestro.Maestro.eraseText$lambda$53: Erasing 60 characters
+21:13:55.226 [ INFO] maestro.cli.runner.CliConsoleListener.onCommandFinished: Erase 60 characters COMPLETED
+21:13:55.226 [ INFO] maestro.cli.runner.CliConsoleListener.onCommandStart: Input text ${EMAIL} RUNNING
+21:13:55.228 [ INFO] maestro.Maestro.inputText: Inputting text: jan.novak@demo.cz
+21:13:57.858 [ INFO] maestro.cli.runner.CliConsoleListener.onCommandFinished: Input text ${EMAIL} COMPLETED
+21:13:57.858 [ INFO] maestro.cli.runner.CliConsoleListener.onCommandStart: Tap on id: login-password RUNNING
+21:13:57.937 [ INFO] maestro.Maestro.tap-HgV9Ck0: Tapping on element:  UiElement(treeNode=TreeNode(attributes={text=••••••••, accessibilityText=Heslo, hintText=, ignoreBoundsFiltering=false, resource-id=login-password, clickable=true, bounds=[105,860][975,986], enabled=true, focused=false, checked=false, scrollable=false, selected=false, class=android.widget.EditText, important-for-accessibility=true, error=}, children=[], clickable=true, enabled=true, focused=false, checked=false, selected=false), bounds=Bounds(x=105, y=860, width=870, height=126))
+21:13:59.141 [ INFO] maestro.Maestro.tap-HgV9Ck0: Tap aimed via settled hierarchy
+21:13:59.142 [ INFO] maestro.Maestro.hierarchyBasedTap-ogj28Uc: Tapping at (540, 923) using hierarchy based logic for wait
+21:14:00.743 [ INFO] maestro.Maestro.hierarchyBasedTap-ogj28Uc: Something has changed in the UI judging by view hierarchy. Proceed.
+21:14:00.744 [ INFO] maestro.cli.runner.CliConsoleListener.onCommandFinished: Tap on id: login-password COMPLETED
+21:14:00.744 [ INFO] maestro.cli.runner.CliConsoleListener.onCommandStart: Erase 60 characters RUNNING
+21:14:00.747 [ INFO] maestro.Maestro.eraseText$lambda$53: Erasing 60 characters
+21:14:03.178 [ INFO] maestro.cli.runner.CliConsoleListener.onCommandFinished: Erase 60 characters COMPLETED
+21:14:03.178 [ INFO] maestro.cli.runner.CliConsoleListener.onCommandStart: Input text ${PASSWORD} RUNNING
+21:14:03.179 [ INFO] maestro.Maestro.inputText: Inputting text: Spatne3!
+21:14:04.923 [ INFO] maestro.cli.runner.CliConsoleListener.onCommandFinished: Input text ${PASSWORD} COMPLETED
+21:14:04.923 [ INFO] maestro.cli.runner.CliConsoleListener.onCommandStart: Hide Keyboard RUNNING
+21:14:04.925 [ INFO] maestro.Maestro.hideKeyboard$lambda$13: Hiding Keyboard
+21:14:05.859 [ INFO] maestro.cli.runner.CliConsoleListener.onCommandFinished: Hide Keyboard COMPLETED
+21:14:05.859 [ INFO] maestro.cli.runner.CliConsoleListener.onCommandFinished: Run login-fill.yaml COMPLETED
+21:14:05.859 [ INFO] maestro.cli.runner.CliConsoleListener.onCommandStart: Run login-submit-record.yaml RUNNING
+21:14:05.860 [ INFO] maestro.cli.runner.CliConsoleListener.onCommandStart: Define variables RUNNING
+21:14:05.862 [ INFO] maestro.cli.runner.CliConsoleListener.onCommandFinished: Define variables COMPLETED
+21:14:05.862 [ INFO] maestro.cli.runner.CliConsoleListener.onCommandStart: Apply configuration RUNNING
+21:14:05.862 [ INFO] maestro.cli.runner.CliConsoleListener.onCommandFinished: Apply configuration COMPLETED
+21:14:05.862 [ INFO] maestro.cli.runner.CliConsoleListener.onCommandStart: Tap on id: login-submit RUNNING
+21:14:05.932 [ INFO] maestro.Maestro.tap-HgV9Ck0: Tapping on element:  UiElement(treeNode=TreeNode(attributes={text=, accessibilityText=Přihlásit, hintText=, ignoreBoundsFiltering=false, resource-id=login-submit, clickable=true, bounds=[105,1104][975,1230], enabled=true, focused=false, checked=false, scrollable=false, selected=false, class=android.widget.Button, important-for-accessibility=true, error=}, children=[TreeNode(attributes={text=Přihlásit, accessibilityText=, hintText=, ignoreBoundsFiltering=false, resource-id=, clickable=false, bounds=[461,1138][618,1195], enabled=true, focused=false, checked=false, scrollable=false, selected=false, class=android.widget.TextView, important-for-accessibility=false, error=}, children=[], clickable=false, enabled=true, focused=false, checked=false, selected=false)], clickable=true, enabled=true, focused=false, checked=false, selected=false), bounds=Bounds(x=105, y=1104, width=870, height=126))
+21:14:07.177 [ INFO] maestro.Maestro.tap-HgV9Ck0: Tap aimed via settled hierarchy
+21:14:07.179 [ INFO] maestro.Maestro.hierarchyBasedTap-ogj28Uc: Tapping at (540, 1167) using hierarchy based logic for wait
+21:14:07.983 [ INFO] maestro.Maestro.hierarchyBasedTap-ogj28Uc: Something has changed in the UI judging by view hierarchy. Proceed.
+21:14:07.983 [ INFO] maestro.cli.runner.CliConsoleListener.onCommandFinished: Tap on id: login-submit COMPLETED
+21:14:07.983 [ INFO] maestro.cli.runner.CliConsoleListener.onCommandStart: Run ${output.lastSubmitAt = Date.now()} RUNNING
+21:14:07.985 [ INFO] maestro.cli.runner.CliConsoleListener.onCommandFinished: Run ${output.lastSubmitAt = Date.now()} COMPLETED
+21:14:07.985 [ INFO] maestro.cli.runner.CliConsoleListener.onCommandStart: Run ${output.lastError = ''} RUNNING
+21:14:07.987 [ INFO] maestro.cli.runner.CliConsoleListener.onCommandFinished: Run ${output.lastError = ''} COMPLETED
+21:14:07.987 [ INFO] maestro.cli.runner.CliConsoleListener.onCommandStart: Čekání na výsledek přihlášení, max 5 s (varování = není vidět hláška ani tab) RUNNING
+21:14:08.020 [ INFO] maestro.cli.runner.CliConsoleListener.onCommandFinished: Čekání na výsledek přihlášení, max 5 s (varování = není vidět hláška ani tab) COMPLETED
+21:14:08.020 [ INFO] maestro.cli.runner.CliConsoleListener.onCommandStart: Take screenshot ${SHOT} RUNNING
+21:14:08.023 [ INFO] maestro.Maestro.takeScreenshot: Taking screenshot
+21:14:08.024 [TRACE] maestro.utils.ScreenshotUtils.takeScreenshot: Taking screenshot to output sink
+21:14:08.165 [ INFO] maestro.cli.runner.CliConsoleListener.onCommandFinished: Take screenshot ${SHOT} COMPLETED
+21:14:08.165 [ INFO] maestro.cli.runner.CliConsoleListener.onCommandStart: Run flow when id: login-error is visible RUNNING
+21:14:08.196 [ INFO] maestro.cli.runner.CliConsoleListener.onCommandStart: Copy text from element with id: login-error RUNNING
+21:14:08.224 [ INFO] maestro.cli.runner.CliConsoleListener.onCommandFinished: Copy text from element with id: login-error COMPLETED
+21:14:08.224 [ INFO] maestro.cli.runner.CliConsoleListener.onCommandStart: Run ${output.lastError = maestro.copiedText} RUNNING
+21:14:08.226 [ INFO] maestro.cli.runner.CliConsoleListener.onCommandFinished: Run ${output.lastError = maestro.copiedText} COMPLETED
+21:14:08.226 [ INFO] maestro.cli.runner.CliConsoleListener.onCommandFinished: Run flow when id: login-error is visible COMPLETED
+21:14:08.226 [ INFO] maestro.cli.runner.CliConsoleListener.onCommandStart: Run ${output.blockedAt = (!output.blockedAt && output.lastError.indexOf('zablokované') >= 0) ? output.lastSubmitAt : output.blockedAt} RUNNING
+21:14:08.231 [ INFO] maestro.cli.runner.CliConsoleListener.onCommandFinished: Run ${output.blockedAt = (!output.blockedAt && output.lastError.indexOf('zablokované') >= 0) ? output.lastSubmitAt : output.blockedAt} COMPLETED
+21:14:08.231 [ INFO] maestro.cli.runner.CliConsoleListener.onCommandStart: Run ${console.log('[LOGIN] ' + SHOT + (output.blockedAt ? ' | ' + Math.round((output.lastSubmitAt - output.blockedAt) / 1000) + ' s od začátku blokace' : '') + ' | ' + (output.lastError ? 'login-error = ' + output.lastError : 'login-error není vidět'))} RUNNING
+21:14:08.237 [ INFO] maestro.orchestra.Orchestra.executeCommands$lambda$26$lambda$24: JsConsole: [LOGIN] l01-spatne-3 | 0 s od začátku blokace | login-error = Přihlášení je na 1 minutu zablokované.
+21:14:08.238 [ INFO] maestro.cli.runner.CliConsoleListener.onCommandFinished: Run ${console.log('[LOGIN] ' + SHOT + (output.blockedAt ? ' | ' + Math.round((output.lastSubmitAt - output.blockedAt) / 1000) + ' s od začátku blokace' : '') + ' | ' + (output.lastError ? 'login-error = ' + output.lastError : 'login-error není vidět'))} COMPLETED
+21:14:08.238 [ INFO] maestro.cli.runner.CliConsoleListener.onCommandFinished: Run login-submit-record.yaml COMPLETED
+21:14:08.238 [ INFO] maestro.cli.runner.CliConsoleListener.onCommandFinished: Run ../../subflows/login-attempt.yaml COMPLETED
+21:14:08.238 [ INFO] maestro.cli.runner.CliConsoleListener.onCommandStart: Run ../../subflows/expect-logged-out.yaml RUNNING
+21:14:08.238 [ INFO] maestro.cli.runner.CliConsoleListener.onCommandStart: Apply configuration RUNNING
+21:14:08.238 [ INFO] maestro.cli.runner.CliConsoleListener.onCommandFinished: Apply configuration COMPLETED
+21:14:08.238 [ INFO] maestro.cli.runner.CliConsoleListener.onCommandStart: Nepřihlášen (přihlašovací formulář je vidět) RUNNING
+21:14:08.312 [ INFO] maestro.cli.runner.CliConsoleListener.onCommandFinished: Nepřihlášen (přihlašovací formulář je vidět) COMPLETED
+21:14:08.313 [ INFO] maestro.cli.runner.CliConsoleListener.onCommandStart: Nepřihlášen (taby aplikace nejsou vidět) RUNNING
+21:14:08.948 [ INFO] maestro.cli.runner.CliConsoleListener.onCommandFinished: Nepřihlášen (taby aplikace nejsou vidět) COMPLETED
+21:14:08.948 [ INFO] maestro.cli.runner.CliConsoleListener.onCommandFinished: Run ../../subflows/expect-logged-out.yaml COMPLETED
+21:14:08.948 [ INFO] maestro.cli.runner.CliConsoleListener.onCommandStart: Pokus 3 bez blokace (BUG-022) RUNNING
+21:14:09.025 [ERROR] maestro.orchestra.Orchestra.executeCommands: [Command execution] CommandFailed: Assertion is false: false is true
+21:14:09.109 [ INFO] maestro.Maestro.takeScreenshot: Taking screenshot
+21:14:09.110 [TRACE] maestro.utils.ScreenshotUtils.takeScreenshot: Taking screenshot to output sink
+21:14:09.258 [ INFO] maestro.cli.runner.CliConsoleListener.onCommandFinished: Pokus 3 bez blokace (BUG-022) FAILED

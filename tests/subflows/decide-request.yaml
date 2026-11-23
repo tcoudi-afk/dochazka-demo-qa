@@ -1,0 +1,35 @@
+# Vedoucí (už přihlášený) otevře Schvalování, najde čekající žádost Jana a schválí ji nebo zamítne.
+# Parametry: ACTION (approve | reject)
+# Testy začínají clearState, takže čekající žádost je jediná a approve-<id> / reject-<id> stačí hledat regexem.
+appId: cz.demo.dochazka
+---
+- tapOn:
+    id: "tab-approvals"
+- extendedWaitUntil:
+    visible:
+      id: "approve-.*"
+    timeout: 10000
+- assertVisible:
+    text: ".*Jan Novák.*"
+    label: "U čekající žádosti je jméno Jan Novák"
+- assertVisible:
+    text: ".*Dovolená.*"
+    label: "U čekající žádosti je typ Dovolená"
+# Náhrada za ruční kontrolu TalkBack (bod 21): tlačítka musí mít text pro čtečku.
+# Maestro porovnává text i accessibilityText prvku a obojí nejde rozlišit. Ostatní tlačítka v aplikaci
+# (btn-new-request, request-submit, entry-delete-*) mají na samotném prvku text prázdný a popisek
+# v accessibilityText (strom UI ze sondy). U approve/reject to sonda neviděla (Schvalování bylo prázdné),
+# ověří se při prvním běhu ve screen-hierarchy.
+- assertVisible:
+    id: "approve-.*"
+    text: ".*\\S.*"
+    label: "Tlačítko Schválit má popisek pro čtečku"
+- assertVisible:
+    id: "reject-.*"
+    text: ".*\\S.*"
+    label: "Tlačítko Zamítnout má popisek pro čtečku"
+- tapOn:
+    id: "${ACTION}-.*"
+- assertNotVisible:
+    id: "approve-.*"
+    label: "Žádost ze Schvalování zmizela"

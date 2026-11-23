@@ -1,0 +1,20 @@
+appId: cz.demo.dochazka
+name: "Login L05 - restart aplikace blokaci neobejde (bod 2)"
+tags:
+  - login
+---
+# Restart musí proběhnout uvnitř blokace. Počítá se od jejího skutečného začátku (output.blockedAt),
+# skutečné sekundy vypíše log ([LOGIN] …).
+- launchApp:
+    clearState: true
+- evalScript: ${output.blockedAt = 0}
+- runFlow:
+    file: ../../subflows/login-block-jan.yaml
+    env: {PREFIX: "l05-jan"}
+# Restart bez smazání dat
+- stopApp
+- launchApp
+- runFlow:
+    file: ../../subflows/login-attempt.yaml
+    env: {EMAIL: "jan.novak@demo.cz", PASSWORD: "Demo2026!", SHOT: "l05-spravne-heslo-po-restartu"}
+- runFlow: ../../subflows/expect-logged-out.yaml

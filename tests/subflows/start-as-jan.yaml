@@ -1,0 +1,11 @@
+# Čistý start (smazaná data aplikace) a přihlášení jako Jan.
+# Každý test začíná tady, aby byl nezávislý na ostatních (a na BUG-007).
+appId: cz.demo.dochazka
+---
+- launchApp:
+    clearState: true
+- runFlow:
+    file: login.yaml
+    env:
+      EMAIL: "jan.novak@demo.cz"
+      PASSWORD: "Demo2026!"

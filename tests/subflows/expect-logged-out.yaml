@@ -1,0 +1,9 @@
+# Ověří, že uživatel přihlášený není: přihlašovací tlačítko je vidět a taby aplikace ne.
+appId: cz.demo.dochazka
+---
+- assertVisible:
+    id: "login-submit"
+    label: "Nepřihlášen (přihlašovací formulář je vidět)"
+- assertNotVisible:
+    id: "tab-settings"
+    label: "Nepřihlášen (taby aplikace nejsou vidět)"

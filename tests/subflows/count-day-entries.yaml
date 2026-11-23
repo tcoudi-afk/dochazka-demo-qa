@@ -1,0 +1,146 @@
+# Spočítá záznamy dne ISO ve Výkazu a uloží počet do output[SLOT].
+# Parametry: ISO (RRRR-MM-DD), SLOT, EXPECT (exists = den musí mít aspoň jeden záznam | any = může být prázdný)
+#
+# Maestro neumí prvky spočítat přímo. Subflow proto postupně zkouší záznam s indexem 0, 1, … 9
+# uvnitř karty dne (entry-<id> jako potomek day-<ISO>) a počet je nejvyšší nalezený index + 1.
+# Indexy jsou napsané natvrdo, aby nezávisely na dosazování proměnných do selektoru.
+# Regex vylučuje tlačítka entry-delete-<id>, která jsou ve stejné kartě.
+# Víc než 10 záznamů subflow neumí a selže (krok 4), místo aby tiše vrátil 10.
+# Výkaz se nejdřív posune nahoru, dnešek je první karta.
+appId: cz.demo.dochazka
+---
+- evalScript: ${output[SLOT] = null}
+
+# 1. Správné místo: Výkaz, aktuální měsíc, začátek seznamu
+- assertTrue:
+    condition: ${ISO.substring(0, 7) == output.thisMonthIso}
+    label: "Den ${ISO} je v aktuálním měsíci"
+- tapOn:
+    id: "tab-timesheet"
+- scrollUntilVisible:
+    element:
+      id: "btn-manual-entry"
+    direction: UP
+    timeout: 10000
+- assertVisible:
+    id: "month-total"
+- runFlow:
+    when:
+      true: ${EXPECT == 'exists'}
+    commands:
+      - assertVisible:
+          id: "day-${ISO}"
+          label: "Den ${ISO} je ve Výkazu"
+
+# 2. Prázdný den = 0
+- evalScript: ${output[SLOT] = 0}
+
+# 3. Počítání: index N viditelný => aspoň N+1 záznamů
+- runFlow:
+    when:
+      visible:
+        id: "entry-(?!delete-).+"
+        childOf:
+          id: "day-${ISO}"
+        index: 0
+    commands:
+      - evalScript: ${output[SLOT] = 1}
+- runFlow:
+    when:
+      visible:
+        id: "entry-(?!delete-).+"
+        childOf:
+          id: "day-${ISO}"
+        index: 1
+    commands:
+      - evalScript: ${output[SLOT] = 2}
+- runFlow:
+    when:
+      visible:
+        id: "entry-(?!delete-).+"
+        childOf:
+          id: "day-${ISO}"
+        index: 2
+    commands:
+      - evalScript: ${output[SLOT] = 3}
+- runFlow:
+    when:
+      visible:
+        id: "entry-(?!delete-).+"
+        childOf:
+          id: "day-${ISO}"
+        index: 3
+    commands:
+      - evalScript: ${output[SLOT] = 4}
+- runFlow:
+    when:
+      visible:
+        id: "entry-(?!delete-).+"
+        childOf:
+          id: "day-${ISO}"
+        index: 4
+    commands:
+      - evalScript: ${output[SLOT] = 5}
+- runFlow:
+    when:
+      visible:
+        id: "entry-(?!delete-).+"
+        childOf:
+          id: "day-${ISO}"
+        index: 5
+    commands:
+      - evalScript: ${output[SLOT] = 6}
+- runFlow:
+    when:
+      visible:
+        id: "entry-(?!delete-).+"
+        childOf:
+          id: "day-${ISO}"
+        index: 6
+    commands:
+      - evalScript: ${output[SLOT] = 7}
+- runFlow:
+    when:
+      visible:
+        id: "entry-(?!delete-).+"
+        childOf:
+          id: "day-${ISO}"
+        index: 7
+    commands:
+      - evalScript: ${output[SLOT] = 8}
+- runFlow:
+    when:
+      visible:
+        id: "entry-(?!delete-).+"
+        childOf:
+          id: "day-${ISO}"
+        index: 8
+    commands:
+      - evalScript: ${output[SLOT] = 9}
+- runFlow:
+    when:
+      visible:
+        id: "entry-(?!delete-).+"
+        childOf:
+          id: "day-${ISO}"
+        index: 9
+    commands:
+      - evalScript: ${output[SLOT] = 10}
+
+# 4. Pojistky
+- assertNotVisible:
+    id: "entry-(?!delete-).+"
+    childOf:
+      id: "day-${ISO}"
+    index: 10
+    label: "Den ${ISO} má nejvýš 10 záznamů (víc subflow spočítat neumí)"
+- runFlow:
+    when:
+      true: ${EXPECT == 'exists'}
+    commands:
+      - assertTrue:
+          condition: ${output[SLOT] >= 1}
+          label: "Den ${ISO} má aspoň jeden záznam"
+- assertTrue:
+    condition: ${typeof output[SLOT] == 'number'}
+    label: "Počet záznamů ${ISO} je uložený v ${SLOT}"

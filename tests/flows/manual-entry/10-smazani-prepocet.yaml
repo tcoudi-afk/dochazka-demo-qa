@@ -1,0 +1,58 @@
+appId: cz.demo.dochazka
+name: "Rucni zaznam 10 - smazani prepocita soucet (bod 12)"
+tags:
+  - regression
+  - vypocty
+  - known-bug
+---
+# known-bug BUG-015: po smazání záznamu zůstane denní součet stejný, když v dni zůstanou další záznamy.
+# Kotevní záznam (T10-KOTVA) zajistí, že v dni po smazání vždy nějaký záznam zůstane, bez ohledu na to,
+# jestli má předevčírem předvyplněná data (review F1). Bez kotvy test 23. 11. (předevčírem sobota 21. 11.,
+# prázdný den) prošel falešně: před i po smazání 0.
+- runScript: ../../scripts/dates.js
+- runFlow: ../../subflows/start-as-jan.yaml
+- runFlow:
+    file: ../../subflows/add-manual-entry.yaml
+    env: {DATE: "${output.twoDaysAgo}", START: "17:00", END: "18:00", NOTE: "T10-KOTVA", TYPE: "Práce"}
+- runFlow:
+    file: ../../subflows/capture-day-total.yaml
+    env:
+      ISO: ${output.twoDaysAgoIso}
+      SLOT: before
+      EXPECT: exists
+- runFlow:
+    file: ../../subflows/add-manual-entry.yaml
+    env: {DATE: "${output.twoDaysAgo}", START: "19:00", END: "21:00", NOTE: "T10-SMAZAT", TYPE: "Práce"}
+- runFlow:
+    file: ../../subflows/capture-day-total.yaml
+    env:
+      ISO: ${output.twoDaysAgoIso}
+      SLOT: added
+      EXPECT: exists
+# Prostřední měření dokazuje, že čtení dne na tomhle místě funguje.
+- assertTrue:
+    condition: ${output.added - output.before == 120}
+    label: "Po přidání vzrostl denní součet o 2 h"
+- scrollUntilVisible:
+    element:
+      text: "T10-SMAZAT"
+    timeout: 15000
+# Tlačítko Smazat hned pod poznámkou smazávaného záznamu
+- tapOn:
+    id: "entry-delete-.*"
+    below:
+      text: "T10-SMAZAT"
+- takeScreenshot: t10-po-smazani
+# Den má po smazání pořád kotevní záznam, proto EXPECT: exists (prázdný den = chyba testu, ne aplikace).
+- runFlow:
+    file: ../../subflows/capture-day-total.yaml
+    env:
+      ISO: ${output.twoDaysAgoIso}
+      SLOT: after
+      EXPECT: exists
+- assertNotVisible:
+    text: "T10-SMAZAT"
+    label: "Smazaný záznam už ve Výkazu není"
+- assertTrue:
+    condition: ${output.after == output.before}
+    label: "Po smazání se denní součet vrátil na původní hodnotu"

@@ -1,0 +1,12 @@
+appId: cz.demo.dochazka
+name: "Rucni zaznam 04 - budouci datum odmitnuto (predpoklad)"
+tags:
+  - regression
+  - validace
+---
+- runScript: ../../scripts/dates.js
+- runFlow: ../../subflows/start-as-jan.yaml
+# Specifikace omezuje jen minulost. Odmítnutí budoucího data je náš předpoklad (list Předpoklady).
+- runFlow:
+    file: ../../subflows/expect-manual-entry-error.yaml
+    env: {DATE: "${output.tomorrow}", START: "17:00", END: "18:00", NOTE: "T04-ZITRA", TYPE: "Práce", ERR: ".+", SHOT: "t04-budouci-datum"}

@@ -1,0 +1,13 @@
+appId: cz.demo.dochazka
+name: "Rucni zaznam 07 - konec pred zacatkem odmitnut (bod 11)"
+tags:
+  - regression
+  - validace
+  - known-bug
+---
+- runScript: ../../scripts/dates.js
+# Na verzi 1.0 selže: záznam se uloží jako záporný čas (BUG-014).
+- runFlow: ../../subflows/start-as-jan.yaml
+- runFlow:
+    file: ../../subflows/expect-manual-entry-error.yaml
+    env: {DATE: "${output.twoDaysAgo}", START: "18:00", END: "17:00", NOTE: "T07-KONEC", TYPE: "Práce", ERR: ".*[Kk]onec.*", SHOT: "t07-konec-pred-zacatkem"}

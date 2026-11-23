@@ -1,0 +1,48 @@
+appId: cz.demo.dochazka
+name: "Rucni zaznam 11 - prekryvajici se zaznamy (BUG-009)"
+tags:
+  - regression
+  - vypocty
+  - known-bug
+---
+- runScript: ../../scripts/dates.js
+- runFlow: ../../subflows/start-as-jan.yaml
+# Práce 17:00–19:00 a Práce 18:00–20:00 se překrývají o hodinu. Odpracováno je 17:00–20:00 = nejvýš 3 h.
+# Správně: aplikace druhý záznam odmítne, nebo přírůstek dne nepřekročí 3 h.
+- runFlow:
+    file: ../../subflows/capture-day-total.yaml
+    env:
+      ISO: ${output.twoDaysAgoIso}
+      SLOT: before
+      EXPECT: any
+- runFlow:
+    file: ../../subflows/add-manual-entry.yaml
+    env: {DATE: "${output.twoDaysAgo}", START: "17:00", END: "19:00", NOTE: "T11-PRVNI", TYPE: "Práce"}
+- runFlow:
+    file: ../../subflows/fill-manual-entry.yaml
+    env: {DATE: "${output.twoDaysAgo}", START: "18:00", END: "20:00", NOTE: "T11-DRUHY", TYPE: "Práce"}
+- tapOn:
+    id: "manual-save"
+- takeScreenshot: t11-po-ulozeni-druheho
+# Pokud aplikace záznam odmítla, zůstane ve formuláři: vrátíme se do Výkazu.
+- runFlow:
+    when:
+      visible:
+        id: "manual-error"
+    commands:
+      - tapOn:
+          id: "tab-timesheet"
+- runFlow:
+    file: ../../subflows/capture-day-total.yaml
+    env:
+      ISO: ${output.twoDaysAgoIso}
+      SLOT: after
+      EXPECT: exists
+- takeScreenshot: t11-vykaz
+# Pojistka proti falešnému úspěchu: první záznam (2 h) se musel započítat, jinak měření nic neověřilo.
+- assertTrue:
+    condition: ${output.after - output.before >= 120}
+    label: "První záznam se započítal (přírůstek aspoň 2 h)"
+- assertTrue:
+    condition: ${output.after - output.before <= 180}
+    label: "Překryv se nezapočítal dvakrát (přírůstek nejvýš 3 h)"

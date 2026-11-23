@@ -1,0 +1,16 @@
+appId: cz.demo.dochazka
+name: "Login L02 - blokace Jana neblokuje Evu (bod 2)"
+tags:
+  - login
+---
+# Předpoklad: blokace se počítá na účet, ne na zařízení.
+- launchApp:
+    clearState: true
+- evalScript: ${output.blockedAt = 0}
+- runFlow:
+    file: ../../subflows/login-block-jan.yaml
+    env: {PREFIX: "l02-jan"}
+- runFlow:
+    file: ../../subflows/login-attempt.yaml
+    env: {EMAIL: "eva.svobodova@demo.cz", PASSWORD: "Demo2026!", SHOT: "l02-eva-behem-blokace-jana"}
+- runFlow: ../../subflows/expect-logged-in.yaml

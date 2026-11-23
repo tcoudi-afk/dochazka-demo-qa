@@ -1,0 +1,318 @@
+18:11:43.581 [ INFO] maestro.cli.runner.CliConsoleListener.onCommandStart: Define variables RUNNING
+18:11:43.581 [ INFO] maestro.cli.runner.CliConsoleListener.onCommandFinished: Define variables COMPLETED
+18:11:43.582 [ INFO] maestro.cli.runner.CliConsoleListener.onCommandStart: Apply configuration RUNNING
+18:11:43.582 [ INFO] maestro.cli.runner.CliConsoleListener.onCommandFinished: Apply configuration COMPLETED
+18:11:43.582 [ INFO] maestro.cli.runner.CliConsoleListener.onCommandStart: Run ../../scripts/dates.js RUNNING
+18:11:43.598 [ INFO] maestro.cli.runner.CliConsoleListener.onCommandFinished: Run ../../scripts/dates.js COMPLETED
+18:11:43.598 [ INFO] maestro.cli.runner.CliConsoleListener.onCommandStart: Run ../../subflows/start-as-jan.yaml RUNNING
+18:11:43.599 [ INFO] maestro.cli.runner.CliConsoleListener.onCommandStart: Apply configuration RUNNING
+18:11:43.599 [ INFO] maestro.cli.runner.CliConsoleListener.onCommandFinished: Apply configuration COMPLETED
+18:11:43.599 [ INFO] maestro.cli.runner.CliConsoleListener.onCommandStart: Launch app "cz.demo.dochazka" with clear state RUNNING
+18:11:43.601 [ INFO] maestro.Maestro.clearAppState$lambda$9: Clearing app state cz.demo.dochazka
+18:11:44.594 [ INFO] maestro.Maestro.launchApp$lambda$6: Launching app cz.demo.dochazka
+18:11:44.594 [ INFO] maestro.Maestro.launchApp$lambda$6: Stopping cz.demo.dochazka app during launch
+18:11:44.704 [ INFO] maestro.cli.runner.CliConsoleListener.onCommandFinished: Launch app "cz.demo.dochazka" with clear state COMPLETED
+18:11:44.704 [ INFO] maestro.cli.runner.CliConsoleListener.onCommandStart: Run login.yaml RUNNING
+18:11:44.705 [ INFO] maestro.cli.runner.CliConsoleListener.onCommandStart: Define variables RUNNING
+18:11:44.705 [ INFO] maestro.cli.runner.CliConsoleListener.onCommandFinished: Define variables COMPLETED
+18:11:44.705 [ INFO] maestro.cli.runner.CliConsoleListener.onCommandStart: Apply configuration RUNNING
+18:11:44.705 [ INFO] maestro.cli.runner.CliConsoleListener.onCommandFinished: Apply configuration COMPLETED
+18:11:44.705 [ INFO] maestro.cli.runner.CliConsoleListener.onCommandStart: Tap on id: login-email RUNNING
+18:11:46.077 [ INFO] maestro.Maestro.tap-HgV9Ck0: Tapping on element:  UiElement(treeNode=TreeNode(attributes={text=, accessibilityText=E-mail, hintText=, ignoreBoundsFiltering=false, resource-id=login-email, clickable=true, bounds=[105,641][975,767], enabled=true, focused=false, checked=false, scrollable=false, selected=false, class=android.widget.EditText, important-for-accessibility=true, error=}, children=[], clickable=true, enabled=true, focused=false, checked=false, selected=false), bounds=Bounds(x=105, y=641, width=870, height=126))
+18:11:47.252 [ INFO] maestro.Maestro.tap-HgV9Ck0: Tap aimed via settled hierarchy
+18:11:47.255 [ INFO] maestro.Maestro.hierarchyBasedTap-ogj28Uc: Tapping at (540, 704) using hierarchy based logic for wait
+18:11:48.836 [ INFO] maestro.Maestro.hierarchyBasedTap-ogj28Uc: Something has changed in the UI judging by view hierarchy. Proceed.
+18:11:48.836 [ INFO] maestro.cli.runner.CliConsoleListener.onCommandFinished: Tap on id: login-email COMPLETED
+18:11:48.836 [ INFO] maestro.cli.runner.CliConsoleListener.onCommandStart: Input text ${EMAIL} RUNNING
+18:11:48.839 [ INFO] maestro.Maestro.inputText: Inputting text: jan.novak@demo.cz
+18:11:51.368 [ INFO] maestro.cli.runner.CliConsoleListener.onCommandFinished: Input text ${EMAIL} COMPLETED
+18:11:51.368 [ INFO] maestro.cli.runner.CliConsoleListener.onCommandStart: Tap on id: login-password RUNNING
+18:11:51.439 [ INFO] maestro.Maestro.tap-HgV9Ck0: Tapping on element:  UiElement(treeNode=TreeNode(attributes={text=, accessibilityText=Heslo, hintText=, ignoreBoundsFiltering=false, resource-id=login-password, clickable=true, bounds=[105,860][975,986], enabled=true, focused=false, checked=false, scrollable=false, selected=false, class=android.widget.EditText, important-for-accessibility=true, error=}, children=[], clickable=true, enabled=true, focused=false, checked=false, selected=false), bounds=Bounds(x=105, y=860, width=870, height=126))
+18:11:52.635 [ INFO] maestro.Maestro.tap-HgV9Ck0: Tap aimed via settled hierarchy
+18:11:52.638 [ INFO] maestro.Maestro.hierarchyBasedTap-ogj28Uc: Tapping at (540, 923) using hierarchy based logic for wait
+18:11:54.134 [ INFO] maestro.Maestro.hierarchyBasedTap-ogj28Uc: Something has changed in the UI judging by view hierarchy. Proceed.
+18:11:54.134 [ INFO] maestro.cli.runner.CliConsoleListener.onCommandFinished: Tap on id: login-password COMPLETED
+18:11:54.134 [ INFO] maestro.cli.runner.CliConsoleListener.onCommandStart: Input text ${PASSWORD} RUNNING
+18:11:54.135 [ INFO] maestro.Maestro.inputText: Inputting text: Demo2026!
+18:11:56.344 [ INFO] maestro.cli.runner.CliConsoleListener.onCommandFinished: Input text ${PASSWORD} COMPLETED
+18:11:56.344 [ INFO] maestro.cli.runner.CliConsoleListener.onCommandStart: Hide Keyboard RUNNING
+18:11:56.346 [ INFO] maestro.Maestro.hideKeyboard$lambda$13: Hiding Keyboard
+18:11:57.273 [ INFO] maestro.cli.runner.CliConsoleListener.onCommandFinished: Hide Keyboard COMPLETED
+18:11:57.273 [ INFO] maestro.cli.runner.CliConsoleListener.onCommandStart: Tap on id: login-submit RUNNING
+18:11:57.339 [ INFO] maestro.Maestro.tap-HgV9Ck0: Tapping on element:  UiElement(treeNode=TreeNode(attributes={text=, accessibilityText=Přihlásit, hintText=, ignoreBoundsFiltering=false, resource-id=login-submit, clickable=true, bounds=[105,1018][975,1144], enabled=true, focused=false, checked=false, scrollable=false, selected=false, class=android.widget.Button, important-for-accessibility=true, error=}, children=[TreeNode(attributes={text=Přihlásit, accessibilityText=, hintText=, ignoreBoundsFiltering=false, resource-id=, clickable=false, bounds=[461,1052][618,1109], enabled=true, focused=false, checked=false, scrollable=false, selected=false, class=android.widget.TextView, important-for-accessibility=false, error=}, children=[], clickable=false, enabled=true, focused=false, checked=false, selected=false)], clickable=true, enabled=true, focused=false, checked=false, selected=false), bounds=Bounds(x=105, y=1018, width=870, height=126))
+18:11:58.526 [ INFO] maestro.Maestro.tap-HgV9Ck0: Tap aimed via settled hierarchy
+18:11:58.528 [ INFO] maestro.Maestro.hierarchyBasedTap-ogj28Uc: Tapping at (540, 1081) using hierarchy based logic for wait
+18:11:59.576 [ INFO] maestro.Maestro.hierarchyBasedTap-ogj28Uc: Something has changed in the UI judging by view hierarchy. Proceed.
+18:11:59.576 [ INFO] maestro.cli.runner.CliConsoleListener.onCommandFinished: Tap on id: login-submit COMPLETED
+18:11:59.577 [ INFO] maestro.cli.runner.CliConsoleListener.onCommandStart: Assert that id: tab-settings is visible RUNNING
+18:11:59.639 [ INFO] maestro.cli.runner.CliConsoleListener.onCommandFinished: Assert that id: tab-settings is visible COMPLETED
+18:11:59.639 [ INFO] maestro.cli.runner.CliConsoleListener.onCommandFinished: Run login.yaml COMPLETED
+18:11:59.639 [ INFO] maestro.cli.runner.CliConsoleListener.onCommandFinished: Run ../../subflows/start-as-jan.yaml COMPLETED
+18:11:59.639 [ INFO] maestro.cli.runner.CliConsoleListener.onCommandStart: Run ../../subflows/capture-day-total.yaml RUNNING
+18:11:59.642 [ INFO] maestro.cli.runner.CliConsoleListener.onCommandStart: Define variables RUNNING
+18:11:59.643 [ INFO] maestro.cli.runner.CliConsoleListener.onCommandFinished: Define variables COMPLETED
+18:11:59.643 [ INFO] maestro.cli.runner.CliConsoleListener.onCommandStart: Apply configuration RUNNING
+18:11:59.643 [ INFO] maestro.cli.runner.CliConsoleListener.onCommandFinished: Apply configuration COMPLETED
+18:11:59.643 [ INFO] maestro.cli.runner.CliConsoleListener.onCommandStart: Run ${output[SLOT] = null} RUNNING
+18:11:59.644 [ INFO] maestro.cli.runner.CliConsoleListener.onCommandFinished: Run ${output[SLOT] = null} COMPLETED
+18:11:59.644 [ INFO] maestro.cli.runner.CliConsoleListener.onCommandStart: Den ${ISO} je v aktuálním měsíci RUNNING
+18:11:59.645 [ INFO] maestro.cli.runner.CliConsoleListener.onCommandFinished: Den ${ISO} je v aktuálním měsíci COMPLETED
+18:11:59.646 [ INFO] maestro.cli.runner.CliConsoleListener.onCommandStart: Tap on id: tab-timesheet RUNNING
+18:11:59.670 [ INFO] maestro.Maestro.tap-HgV9Ck0: Tapping on element:  UiElement(treeNode=TreeNode(attributes={text=, accessibilityText=Výkaz, hintText=, ignoreBoundsFiltering=false, resource-id=tab-timesheet, clickable=true, bounds=[270,2190][540,2337], enabled=true, focused=false, checked=false, scrollable=false, selected=false, class=android.view.View, important-for-accessibility=true, error=}, children=[TreeNode(attributes={text=Výkaz, accessibilityText=, hintText=, ignoreBoundsFiltering=false, resource-id=, clickable=false, bounds=[355,2238][454,2289], enabled=true, focused=false, checked=false, scrollable=false, selected=false, class=android.widget.TextView, important-for-accessibility=false, error=}, children=[], clickable=false, enabled=true, focused=false, checked=false, selected=false)], clickable=true, enabled=true, focused=false, checked=false, selected=false), bounds=Bounds(x=270, y=2190, width=270, height=147))
+18:12:01.356 [ INFO] maestro.Maestro.tap-HgV9Ck0: Tap aimed via settled hierarchy
+18:12:01.359 [ INFO] maestro.Maestro.hierarchyBasedTap-ogj28Uc: Tapping at (405, 2263) using hierarchy based logic for wait
+18:12:02.496 [ INFO] maestro.Maestro.hierarchyBasedTap-ogj28Uc: Something has changed in the UI judging by view hierarchy. Proceed.
+18:12:02.496 [ INFO] maestro.cli.runner.CliConsoleListener.onCommandFinished: Tap on id: tab-timesheet COMPLETED
+18:12:02.496 [ INFO] maestro.cli.runner.CliConsoleListener.onCommandStart: Scrolling UP until id: btn-manual-entry is visible with speed 40, visibility percentage 100%, timeout 10000 ms, with centering disabled RUNNING
+18:12:02.592 [ INFO] maestro.orchestra.Orchestra.scrollUntilVisible: Scrolling try count: 0, DeviceWidth: 1080, DeviceWidth: 2400
+18:12:02.592 [ INFO] maestro.orchestra.Orchestra.scrollUntilVisible: Element bounds: Bounds(x=42, y=664, width=996, height=126)
+18:12:02.592 [ INFO] maestro.orchestra.Orchestra.scrollUntilVisible: Visibility Percent: 1.0
+18:12:02.592 [ INFO] maestro.orchestra.Orchestra.scrollUntilVisible: Command centerElement: ScrollUntilVisibleCommand(selector=ElementSelector(textRegex=null, idRegex=btn-manual-entry, size=null, below=null, above=null, leftOf=null, rightOf=null, containsChild=null, containsDescendants=null, traits=null, index=null, enabled=null, optional=false, selected=null, checked=null, focused=null, childOf=null, css=null), direction=UP, scrollDuration=601, visibilityPercentage=100, timeout=10000, waitToSettleTimeoutMs=null, centerElement=false, originalSpeedValue=40, label=null, optional=false).centerElement
+18:12:02.592 [ INFO] maestro.orchestra.Orchestra.scrollUntilVisible: visibilityPercentageNormalized: 1.0
+18:12:02.592 [ INFO] maestro.cli.runner.CliConsoleListener.onCommandFinished: Scrolling UP until id: btn-manual-entry is visible with speed 40, visibility percentage 100%, timeout 10000 ms, with centering disabled COMPLETED
+18:12:02.592 [ INFO] maestro.cli.runner.CliConsoleListener.onCommandStart: Assert that id: month-total is visible RUNNING
+18:12:02.680 [ INFO] maestro.cli.runner.CliConsoleListener.onCommandFinished: Assert that id: month-total is visible COMPLETED
+18:12:02.680 [ INFO] maestro.cli.runner.CliConsoleListener.onCommandStart: Run flow when ${EXPECT == 'exists'} is true RUNNING
+18:12:02.681 [ INFO] maestro.orchestra.Orchestra.executeSubflowCommands: [Command execution subflow] CommandSkipped: null
+18:12:02.681 [ INFO] maestro.cli.runner.CliConsoleListener.onCommandFinished: Run flow when ${EXPECT == 'exists'} is true SKIPPED
+18:12:02.681 [ INFO] maestro.cli.runner.CliConsoleListener.onCommandStart: Run flow when ${EXPECT != 'exists'} is true RUNNING
+18:12:02.682 [ INFO] maestro.cli.runner.CliConsoleListener.onCommandStart: Hledám den ${ISO} (varování = den je prázdný) RUNNING
+18:12:02.776 [ INFO] maestro.orchestra.Orchestra.scrollUntilVisible: Scrolling try count: 0, DeviceWidth: 1080, DeviceWidth: 2400
+18:12:02.776 [ INFO] maestro.orchestra.Orchestra.scrollUntilVisible: Element bounds: Bounds(x=807, y=853, width=199, height=57)
+18:12:02.776 [ INFO] maestro.orchestra.Orchestra.scrollUntilVisible: Visibility Percent: 1.0
+18:12:02.776 [ INFO] maestro.orchestra.Orchestra.scrollUntilVisible: Command centerElement: ScrollUntilVisibleCommand(selector=ElementSelector(textRegex=null, idRegex=day-total-2026-11-20, size=null, below=null, above=null, leftOf=null, rightOf=null, containsChild=null, containsDescendants=null, traits=null, index=null, enabled=null, optional=false, selected=null, checked=null, focused=null, childOf=null, css=null), direction=DOWN, scrollDuration=601, visibilityPercentage=100, timeout=8000, waitToSettleTimeoutMs=null, centerElement=false, originalSpeedValue=40, label=Hledám den 2026-11-20 (varování = den je prázdný), optional=true).centerElement
+18:12:02.776 [ INFO] maestro.orchestra.Orchestra.scrollUntilVisible: visibilityPercentageNormalized: 1.0
+18:12:02.776 [ INFO] maestro.cli.runner.CliConsoleListener.onCommandFinished: Hledám den ${ISO} (varování = den je prázdný) COMPLETED
+18:12:02.776 [ INFO] maestro.cli.runner.CliConsoleListener.onCommandFinished: Run flow when ${EXPECT != 'exists'} is true COMPLETED
+18:12:02.777 [ INFO] maestro.cli.runner.CliConsoleListener.onCommandStart: Run flow when id: day-total-${ISO} is visible RUNNING
+18:12:02.876 [ INFO] maestro.cli.runner.CliConsoleListener.onCommandStart: Copy text from element with id: day-total-${ISO} RUNNING
+18:12:02.964 [ INFO] maestro.cli.runner.CliConsoleListener.onCommandFinished: Copy text from element with id: day-total-${ISO} COMPLETED
+18:12:02.964 [ INFO] maestro.cli.runner.CliConsoleListener.onCommandStart: Run ../scripts/parse-duration.js RUNNING
+18:12:02.974 [ INFO] maestro.cli.runner.CliConsoleListener.onCommandFinished: Run ../scripts/parse-duration.js COMPLETED
+18:12:02.974 [ INFO] maestro.cli.runner.CliConsoleListener.onCommandStart: Denní součet ${ISO} jde přečíst ve formátu X h YY min RUNNING
+18:12:02.976 [ INFO] maestro.cli.runner.CliConsoleListener.onCommandFinished: Denní součet ${ISO} jde přečíst ve formátu X h YY min COMPLETED
+18:12:02.976 [ INFO] maestro.cli.runner.CliConsoleListener.onCommandFinished: Run flow when id: day-total-${ISO} is visible COMPLETED
+18:12:02.976 [ INFO] maestro.cli.runner.CliConsoleListener.onCommandStart: Run flow when id: day-total-${ISO} is not visible RUNNING
+18:12:09.992 [ INFO] maestro.orchestra.Orchestra.executeSubflowCommands: [Command execution subflow] CommandSkipped: null
+18:12:09.992 [ INFO] maestro.cli.runner.CliConsoleListener.onCommandFinished: Run flow when id: day-total-${ISO} is not visible SKIPPED
+18:12:09.992 [ INFO] maestro.cli.runner.CliConsoleListener.onCommandStart: Run flow when ${EXPECT == 'empty'} is true RUNNING
+18:12:09.995 [ INFO] maestro.orchestra.Orchestra.executeSubflowCommands: [Command execution subflow] CommandSkipped: null
+18:12:09.995 [ INFO] maestro.cli.runner.CliConsoleListener.onCommandFinished: Run flow when ${EXPECT == 'empty'} is true SKIPPED
+18:12:09.995 [ INFO] maestro.cli.runner.CliConsoleListener.onCommandStart: Denní součet ${ISO} je uložený v ${SLOT} RUNNING
+18:12:09.997 [ INFO] maestro.cli.runner.CliConsoleListener.onCommandFinished: Denní součet ${ISO} je uložený v ${SLOT} COMPLETED
+18:12:09.997 [ INFO] maestro.cli.runner.CliConsoleListener.onCommandFinished: Run ../../subflows/capture-day-total.yaml COMPLETED
+18:12:09.997 [ INFO] maestro.cli.runner.CliConsoleListener.onCommandStart: Run ../../subflows/add-manual-entry.yaml RUNNING
+18:12:09.998 [ INFO] maestro.cli.runner.CliConsoleListener.onCommandStart: Define variables RUNNING
+18:12:09.999 [ INFO] maestro.cli.runner.CliConsoleListener.onCommandFinished: Define variables COMPLETED
+18:12:09.999 [ INFO] maestro.cli.runner.CliConsoleListener.onCommandStart: Apply configuration RUNNING
+18:12:09.999 [ INFO] maestro.cli.runner.CliConsoleListener.onCommandFinished: Apply configuration COMPLETED
+18:12:09.999 [ INFO] maestro.cli.runner.CliConsoleListener.onCommandStart: Run fill-manual-entry.yaml RUNNING
+18:12:10.001 [ INFO] maestro.cli.runner.CliConsoleListener.onCommandStart: Define variables RUNNING
+18:12:10.003 [ INFO] maestro.cli.runner.CliConsoleListener.onCommandFinished: Define variables COMPLETED
+18:12:10.003 [ INFO] maestro.cli.runner.CliConsoleListener.onCommandStart: Apply configuration RUNNING
+18:12:10.003 [ INFO] maestro.cli.runner.CliConsoleListener.onCommandFinished: Apply configuration COMPLETED
+18:12:10.003 [ INFO] maestro.cli.runner.CliConsoleListener.onCommandStart: Tap on id: tab-timesheet RUNNING
+18:12:10.092 [ INFO] maestro.Maestro.tap-HgV9Ck0: Tapping on element:  UiElement(treeNode=TreeNode(attributes={text=, accessibilityText=Výkaz, hintText=, ignoreBoundsFiltering=false, resource-id=tab-timesheet, clickable=true, bounds=[270,2190][540,2337], enabled=true, focused=false, checked=false, scrollable=false, selected=true, class=android.view.View, important-for-accessibility=true, error=}, children=[TreeNode(attributes={text=, accessibilityText=, hintText=, ignoreBoundsFiltering=false, resource-id=, clickable=false, bounds=[312,2190][498,2198], enabled=true, focused=false, checked=false, scrollable=false, selected=true, class=android.view.ViewGroup, important-for-accessibility=false, error=}, children=[], clickable=false, enabled=true, focused=false, checked=false, selected=true), TreeNode(attributes={text=Výkaz, accessibilityText=, hintText=, ignoreBoundsFiltering=false, resource-id=, clickable=false, bounds=[354,2238][455,2289], enabled=true, focused=false, checked=false, scrollable=false, selected=true, class=android.widget.TextView, important-for-accessibility=false, error=}, children=[], clickable=false, enabled=true, focused=false, checked=false, selected=true)], clickable=true, enabled=true, focused=false, checked=false, selected=true), bounds=Bounds(x=270, y=2190, width=270, height=147))
+18:12:11.307 [ INFO] maestro.Maestro.tap-HgV9Ck0: Tap aimed via settled hierarchy
+18:12:11.309 [ INFO] maestro.Maestro.hierarchyBasedTap-ogj28Uc: Tapping at (405, 2263) using hierarchy based logic for wait
+18:12:11.616 [ INFO] maestro.cli.runner.CliConsoleListener.onCommandFinished: Tap on id: tab-timesheet COMPLETED
+18:12:11.616 [ INFO] maestro.cli.runner.CliConsoleListener.onCommandStart: Scrolling UP until id: btn-manual-entry is visible with speed 40, visibility percentage 100%, timeout 10000 ms, with centering disabled RUNNING
+18:12:11.756 [ INFO] maestro.orchestra.Orchestra.scrollUntilVisible: Scrolling try count: 0, DeviceWidth: 1080, DeviceWidth: 2400
+18:12:11.756 [ INFO] maestro.orchestra.Orchestra.scrollUntilVisible: Element bounds: Bounds(x=42, y=664, width=996, height=126)
+18:12:11.756 [ INFO] maestro.orchestra.Orchestra.scrollUntilVisible: Visibility Percent: 1.0
+18:12:11.756 [ INFO] maestro.orchestra.Orchestra.scrollUntilVisible: Command centerElement: ScrollUntilVisibleCommand(selector=ElementSelector(textRegex=null, idRegex=btn-manual-entry, size=null, below=null, above=null, leftOf=null, rightOf=null, containsChild=null, containsDescendants=null, traits=null, index=null, enabled=null, optional=false, selected=null, checked=null, focused=null, childOf=null, css=null), direction=UP, scrollDuration=601, visibilityPercentage=100, timeout=10000, waitToSettleTimeoutMs=null, centerElement=false, originalSpeedValue=40, label=null, optional=false).centerElement
+18:12:11.756 [ INFO] maestro.orchestra.Orchestra.scrollUntilVisible: visibilityPercentageNormalized: 1.0
+18:12:11.756 [ INFO] maestro.cli.runner.CliConsoleListener.onCommandFinished: Scrolling UP until id: btn-manual-entry is visible with speed 40, visibility percentage 100%, timeout 10000 ms, with centering disabled COMPLETED
+18:12:11.756 [ INFO] maestro.cli.runner.CliConsoleListener.onCommandStart: Tap on id: btn-manual-entry RUNNING
+18:12:11.845 [ INFO] maestro.Maestro.tap-HgV9Ck0: Tapping on element:  UiElement(treeNode=TreeNode(attributes={text=, accessibilityText=Ruční záznam, hintText=, ignoreBoundsFiltering=false, resource-id=btn-manual-entry, clickable=true, bounds=[42,664][1038,790], enabled=true, focused=false, checked=false, scrollable=false, selected=false, class=android.widget.Button, important-for-accessibility=true, error=}, children=[TreeNode(attributes={text=Ruční záznam, accessibilityText=, hintText=, ignoreBoundsFiltering=false, resource-id=, clickable=false, bounds=[407,698][672,755], enabled=true, focused=false, checked=false, scrollable=false, selected=false, class=android.widget.TextView, important-for-accessibility=false, error=}, children=[], clickable=false, enabled=true, focused=false, checked=false, selected=false)], clickable=true, enabled=true, focused=false, checked=false, selected=false), bounds=Bounds(x=42, y=664, width=996, height=126))
+18:12:13.048 [ INFO] maestro.Maestro.tap-HgV9Ck0: Tap aimed via settled hierarchy
+18:12:13.050 [ INFO] maestro.Maestro.hierarchyBasedTap-ogj28Uc: Tapping at (540, 727) using hierarchy based logic for wait
+18:12:14.143 [ INFO] maestro.Maestro.hierarchyBasedTap-ogj28Uc: Something has changed in the UI judging by view hierarchy. Proceed.
+18:12:14.143 [ INFO] maestro.cli.runner.CliConsoleListener.onCommandFinished: Tap on id: btn-manual-entry COMPLETED
+18:12:14.143 [ INFO] maestro.cli.runner.CliConsoleListener.onCommandStart: Tap on id: manual-date RUNNING
+18:12:14.217 [ INFO] maestro.Maestro.tap-HgV9Ck0: Tapping on element:  UiElement(treeNode=TreeNode(attributes={text=, accessibilityText=Datum, hintText=DD.MM.RRRR, ignoreBoundsFiltering=false, resource-id=manual-date, clickable=true, bounds=[42,381][1038,507], enabled=true, focused=false, checked=false, scrollable=false, selected=false, class=android.widget.EditText, important-for-accessibility=true, error=}, children=[], clickable=true, enabled=true, focused=false, checked=false, selected=false), bounds=Bounds(x=42, y=381, width=996, height=126))
+18:12:15.360 [ INFO] maestro.Maestro.tap-HgV9Ck0: Tap aimed via settled hierarchy
+18:12:15.362 [ INFO] maestro.Maestro.hierarchyBasedTap-ogj28Uc: Tapping at (540, 444) using hierarchy based logic for wait
+18:12:16.992 [ INFO] maestro.Maestro.hierarchyBasedTap-ogj28Uc: Something has changed in the UI judging by view hierarchy. Proceed.
+18:12:16.992 [ INFO] maestro.cli.runner.CliConsoleListener.onCommandFinished: Tap on id: manual-date COMPLETED
+18:12:16.992 [ INFO] maestro.cli.runner.CliConsoleListener.onCommandStart: Input text ${DATE} RUNNING
+18:12:16.993 [ INFO] maestro.Maestro.inputText: Inputting text: 20.11.2026
+18:12:18.744 [ INFO] maestro.cli.runner.CliConsoleListener.onCommandFinished: Input text ${DATE} COMPLETED
+18:12:18.744 [ INFO] maestro.cli.runner.CliConsoleListener.onCommandStart: Tap on id: manual-start RUNNING
+18:12:18.824 [ INFO] maestro.Maestro.tap-HgV9Ck0: Tapping on element:  UiElement(treeNode=TreeNode(attributes={text=, accessibilityText=Začátek, hintText=HH:MM, ignoreBoundsFiltering=false, resource-id=manual-start, clickable=true, bounds=[42,600][1038,726], enabled=true, focused=false, checked=false, scrollable=false, selected=false, class=android.widget.EditText, important-for-accessibility=true, error=}, children=[], clickable=true, enabled=true, focused=false, checked=false, selected=false), bounds=Bounds(x=42, y=600, width=996, height=126))
+18:12:20.061 [ INFO] maestro.Maestro.tap-HgV9Ck0: Tap aimed via settled hierarchy
+18:12:20.062 [ INFO] maestro.Maestro.hierarchyBasedTap-ogj28Uc: Tapping at (540, 663) using hierarchy based logic for wait
+18:12:21.451 [ INFO] maestro.Maestro.hierarchyBasedTap-ogj28Uc: Something has changed in the UI judging by view hierarchy. Proceed.
+18:12:21.451 [ INFO] maestro.cli.runner.CliConsoleListener.onCommandFinished: Tap on id: manual-start COMPLETED
+18:12:21.451 [ INFO] maestro.cli.runner.CliConsoleListener.onCommandStart: Input text ${START} RUNNING
+18:12:21.452 [ INFO] maestro.Maestro.inputText: Inputting text: 17:00
+18:12:22.621 [ INFO] maestro.cli.runner.CliConsoleListener.onCommandFinished: Input text ${START} COMPLETED
+18:12:22.621 [ INFO] maestro.cli.runner.CliConsoleListener.onCommandStart: Tap on id: manual-end RUNNING
+18:12:22.696 [ INFO] maestro.Maestro.tap-HgV9Ck0: Tapping on element:  UiElement(treeNode=TreeNode(attributes={text=, accessibilityText=Konec, hintText=HH:MM, ignoreBoundsFiltering=false, resource-id=manual-end, clickable=true, bounds=[42,819][1038,945], enabled=true, focused=false, checked=false, scrollable=false, selected=false, class=android.widget.EditText, important-for-accessibility=true, error=}, children=[], clickable=true, enabled=true, focused=false, checked=false, selected=false), bounds=Bounds(x=42, y=819, width=996, height=126))
+18:12:23.892 [ INFO] maestro.Maestro.tap-HgV9Ck0: Tap aimed via settled hierarchy
+18:12:23.894 [ INFO] maestro.Maestro.hierarchyBasedTap-ogj28Uc: Tapping at (540, 882) using hierarchy based logic for wait
+18:12:25.300 [ INFO] maestro.Maestro.hierarchyBasedTap-ogj28Uc: Something has changed in the UI judging by view hierarchy. Proceed.
+18:12:25.300 [ INFO] maestro.cli.runner.CliConsoleListener.onCommandFinished: Tap on id: manual-end COMPLETED
+18:12:25.300 [ INFO] maestro.cli.runner.CliConsoleListener.onCommandStart: Input text ${END} RUNNING
+18:12:25.301 [ INFO] maestro.Maestro.inputText: Inputting text: 19:00
+18:12:26.431 [ INFO] maestro.cli.runner.CliConsoleListener.onCommandFinished: Input text ${END} COMPLETED
+18:12:26.431 [ INFO] maestro.cli.runner.CliConsoleListener.onCommandStart: Hide Keyboard RUNNING
+18:12:26.434 [ INFO] maestro.Maestro.hideKeyboard$lambda$13: Hiding Keyboard
+18:12:27.357 [ INFO] maestro.cli.runner.CliConsoleListener.onCommandFinished: Hide Keyboard COMPLETED
+18:12:27.358 [ INFO] maestro.cli.runner.CliConsoleListener.onCommandStart: Run flow when ${TYPE != 'Práce'} is true RUNNING
+18:12:27.359 [ INFO] maestro.orchestra.Orchestra.executeSubflowCommands: [Command execution subflow] CommandSkipped: null
+18:12:27.359 [ INFO] maestro.cli.runner.CliConsoleListener.onCommandFinished: Run flow when ${TYPE != 'Práce'} is true SKIPPED
+18:12:27.359 [ INFO] maestro.cli.runner.CliConsoleListener.onCommandStart: Run flow when ${NOTE != 'NONE'} is true RUNNING
+18:12:27.359 [ INFO] maestro.cli.runner.CliConsoleListener.onCommandStart: Tap on id: manual-note RUNNING
+18:12:27.437 [ INFO] maestro.Maestro.tap-HgV9Ck0: Tapping on element:  UiElement(treeNode=TreeNode(attributes={text=, accessibilityText=Poznámka, hintText=, ignoreBoundsFiltering=false, resource-id=manual-note, clickable=true, bounds=[42,1383][1038,1614], enabled=true, focused=false, checked=false, scrollable=false, selected=false, class=android.widget.EditText, important-for-accessibility=true, error=}, children=[], clickable=true, enabled=true, focused=false, checked=false, selected=false), bounds=Bounds(x=42, y=1383, width=996, height=231))
+18:12:28.640 [ INFO] maestro.Maestro.tap-HgV9Ck0: Tap aimed via settled hierarchy
+18:12:28.642 [ INFO] maestro.Maestro.hierarchyBasedTap-ogj28Uc: Tapping at (540, 1498) using hierarchy based logic for wait
+18:12:30.259 [ INFO] maestro.Maestro.hierarchyBasedTap-ogj28Uc: Something has changed in the UI judging by view hierarchy. Proceed.
+18:12:30.259 [ INFO] maestro.cli.runner.CliConsoleListener.onCommandFinished: Tap on id: manual-note COMPLETED
+18:12:30.259 [ INFO] maestro.cli.runner.CliConsoleListener.onCommandStart: Input text ${NOTE} RUNNING
+18:12:30.261 [ INFO] maestro.Maestro.inputText: Inputting text: T10-SMAZAT
+18:12:32.033 [ INFO] maestro.cli.runner.CliConsoleListener.onCommandFinished: Input text ${NOTE} COMPLETED
+18:12:32.033 [ INFO] maestro.cli.runner.CliConsoleListener.onCommandStart: Hide Keyboard RUNNING
+18:12:32.035 [ INFO] maestro.Maestro.hideKeyboard$lambda$13: Hiding Keyboard
+18:12:32.961 [ INFO] maestro.cli.runner.CliConsoleListener.onCommandFinished: Hide Keyboard COMPLETED
+18:12:32.961 [ INFO] maestro.cli.runner.CliConsoleListener.onCommandFinished: Run flow when ${NOTE != 'NONE'} is true COMPLETED
+18:12:32.961 [ INFO] maestro.cli.runner.CliConsoleListener.onCommandFinished: Run fill-manual-entry.yaml COMPLETED
+18:12:32.961 [ INFO] maestro.cli.runner.CliConsoleListener.onCommandStart: Tap on id: manual-save RUNNING
+18:12:33.040 [ INFO] maestro.Maestro.tap-HgV9Ck0: Tapping on element:  UiElement(treeNode=TreeNode(attributes={text=, accessibilityText=Uložit, hintText=, ignoreBoundsFiltering=false, resource-id=manual-save, clickable=true, bounds=[42,1646][1038,1772], enabled=true, focused=false, checked=false, scrollable=false, selected=false, class=android.widget.Button, important-for-accessibility=true, error=}, children=[TreeNode(attributes={text=Uložit, accessibilityText=, hintText=, ignoreBoundsFiltering=false, resource-id=, clickable=false, bounds=[485,1680][594,1737], enabled=true, focused=false, checked=false, scrollable=false, selected=false, class=android.widget.TextView, important-for-accessibility=false, error=}, children=[], clickable=false, enabled=true, focused=false, checked=false, selected=false)], clickable=true, enabled=true, focused=false, checked=false, selected=false), bounds=Bounds(x=42, y=1646, width=996, height=126))
+18:12:34.235 [ INFO] maestro.Maestro.tap-HgV9Ck0: Tap aimed via settled hierarchy
+18:12:34.237 [ INFO] maestro.Maestro.hierarchyBasedTap-ogj28Uc: Tapping at (540, 1709) using hierarchy based logic for wait
+18:12:35.352 [ INFO] maestro.Maestro.hierarchyBasedTap-ogj28Uc: Something has changed in the UI judging by view hierarchy. Proceed.
+18:12:35.352 [ INFO] maestro.cli.runner.CliConsoleListener.onCommandFinished: Tap on id: manual-save COMPLETED
+18:12:35.352 [ INFO] maestro.cli.runner.CliConsoleListener.onCommandStart: Assert that id: btn-manual-entry is visible RUNNING
+18:12:35.436 [ INFO] maestro.cli.runner.CliConsoleListener.onCommandFinished: Assert that id: btn-manual-entry is visible COMPLETED
+18:12:35.436 [ INFO] maestro.cli.runner.CliConsoleListener.onCommandFinished: Run ../../subflows/add-manual-entry.yaml COMPLETED
+18:12:35.436 [ INFO] maestro.cli.runner.CliConsoleListener.onCommandStart: Run ../../subflows/capture-day-total.yaml RUNNING
+18:12:35.438 [ INFO] maestro.cli.runner.CliConsoleListener.onCommandStart: Define variables RUNNING
+18:12:35.439 [ INFO] maestro.cli.runner.CliConsoleListener.onCommandFinished: Define variables COMPLETED
+18:12:35.439 [ INFO] maestro.cli.runner.CliConsoleListener.onCommandStart: Apply configuration RUNNING
+18:12:35.439 [ INFO] maestro.cli.runner.CliConsoleListener.onCommandFinished: Apply configuration COMPLETED
+18:12:35.439 [ INFO] maestro.cli.runner.CliConsoleListener.onCommandStart: Run ${output[SLOT] = null} RUNNING
+18:12:35.439 [ INFO] maestro.cli.runner.CliConsoleListener.onCommandFinished: Run ${output[SLOT] = null} COMPLETED
+18:12:35.439 [ INFO] maestro.cli.runner.CliConsoleListener.onCommandStart: Den ${ISO} je v aktuálním měsíci RUNNING
+18:12:35.442 [ INFO] maestro.cli.runner.CliConsoleListener.onCommandFinished: Den ${ISO} je v aktuálním měsíci COMPLETED
+18:12:35.442 [ INFO] maestro.cli.runner.CliConsoleListener.onCommandStart: Tap on id: tab-timesheet RUNNING
+18:12:35.527 [ INFO] maestro.Maestro.tap-HgV9Ck0: Tapping on element:  UiElement(treeNode=TreeNode(attributes={text=, accessibilityText=Výkaz, hintText=, ignoreBoundsFiltering=false, resource-id=tab-timesheet, clickable=true, bounds=[270,2190][540,2337], enabled=true, focused=false, checked=false, scrollable=false, selected=true, class=android.view.View, important-for-accessibility=true, error=}, children=[TreeNode(attributes={text=, accessibilityText=, hintText=, ignoreBoundsFiltering=false, resource-id=, clickable=false, bounds=[312,2190][498,2198], enabled=true, focused=false, checked=false, scrollable=false, selected=true, class=android.view.ViewGroup, important-for-accessibility=false, error=}, children=[], clickable=false, enabled=true, focused=false, checked=false, selected=true), TreeNode(attributes={text=Výkaz, accessibilityText=, hintText=, ignoreBoundsFiltering=false, resource-id=, clickable=false, bounds=[354,2238][455,2289], enabled=true, focused=false, checked=false, scrollable=false, selected=true, class=android.widget.TextView, important-for-accessibility=false, error=}, children=[], clickable=false, enabled=true, focused=false, checked=false, selected=true)], clickable=true, enabled=true, focused=false, checked=false, selected=true), bounds=Bounds(x=270, y=2190, width=270, height=147))
+18:12:36.744 [ INFO] maestro.Maestro.tap-HgV9Ck0: Tap aimed via settled hierarchy
+18:12:36.746 [ INFO] maestro.Maestro.hierarchyBasedTap-ogj28Uc: Tapping at (405, 2263) using hierarchy based logic for wait
+18:12:36.993 [ INFO] maestro.cli.runner.CliConsoleListener.onCommandFinished: Tap on id: tab-timesheet COMPLETED
+18:12:36.993 [ INFO] maestro.cli.runner.CliConsoleListener.onCommandStart: Scrolling UP until id: btn-manual-entry is visible with speed 40, visibility percentage 100%, timeout 10000 ms, with centering disabled RUNNING
+18:12:37.040 [ INFO] maestro.orchestra.Orchestra.scrollUntilVisible: Scrolling try count: 0, DeviceWidth: 1080, DeviceWidth: 2400
+18:12:37.040 [ INFO] maestro.orchestra.Orchestra.scrollUntilVisible: Element bounds: Bounds(x=42, y=664, width=996, height=126)
+18:12:37.040 [ INFO] maestro.orchestra.Orchestra.scrollUntilVisible: Visibility Percent: 1.0
+18:12:37.040 [ INFO] maestro.orchestra.Orchestra.scrollUntilVisible: Command centerElement: ScrollUntilVisibleCommand(selector=ElementSelector(textRegex=null, idRegex=btn-manual-entry, size=null, below=null, above=null, leftOf=null, rightOf=null, containsChild=null, containsDescendants=null, traits=null, index=null, enabled=null, optional=false, selected=null, checked=null, focused=null, childOf=null, css=null), direction=UP, scrollDuration=601, visibilityPercentage=100, timeout=10000, waitToSettleTimeoutMs=null, centerElement=false, originalSpeedValue=40, label=null, optional=false).centerElement
+18:12:37.040 [ INFO] maestro.orchestra.Orchestra.scrollUntilVisible: visibilityPercentageNormalized: 1.0
+18:12:37.040 [ INFO] maestro.cli.runner.CliConsoleListener.onCommandFinished: Scrolling UP until id: btn-manual-entry is visible with speed 40, visibility percentage 100%, timeout 10000 ms, with centering disabled COMPLETED
+18:12:37.040 [ INFO] maestro.cli.runner.CliConsoleListener.onCommandStart: Assert that id: month-total is visible RUNNING
+18:12:37.116 [ INFO] maestro.cli.runner.CliConsoleListener.onCommandFinished: Assert that id: month-total is visible COMPLETED
+18:12:37.116 [ INFO] maestro.cli.runner.CliConsoleListener.onCommandStart: Run flow when ${EXPECT == 'exists'} is true RUNNING
+18:12:37.117 [ INFO] maestro.cli.runner.CliConsoleListener.onCommandStart: Den ${ISO} je ve Výkazu RUNNING
+18:12:37.205 [ INFO] maestro.orchestra.Orchestra.scrollUntilVisible: Scrolling try count: 0, DeviceWidth: 1080, DeviceWidth: 2400
+18:12:37.205 [ INFO] maestro.orchestra.Orchestra.scrollUntilVisible: Element bounds: Bounds(x=783, y=853, width=223, height=57)
+18:12:37.205 [ INFO] maestro.orchestra.Orchestra.scrollUntilVisible: Visibility Percent: 1.0
+18:12:37.205 [ INFO] maestro.orchestra.Orchestra.scrollUntilVisible: Command centerElement: ScrollUntilVisibleCommand(selector=ElementSelector(textRegex=null, idRegex=day-total-2026-11-20, size=null, below=null, above=null, leftOf=null, rightOf=null, containsChild=null, containsDescendants=null, traits=null, index=null, enabled=null, optional=false, selected=null, checked=null, focused=null, childOf=null, css=null), direction=DOWN, scrollDuration=601, visibilityPercentage=100, timeout=8000, waitToSettleTimeoutMs=null, centerElement=false, originalSpeedValue=40, label=Den 2026-11-20 je ve Výkazu, optional=false).centerElement
+18:12:37.205 [ INFO] maestro.orchestra.Orchestra.scrollUntilVisible: visibilityPercentageNormalized: 1.0
+18:12:37.205 [ INFO] maestro.cli.runner.CliConsoleListener.onCommandFinished: Den ${ISO} je ve Výkazu COMPLETED
+18:12:37.205 [ INFO] maestro.cli.runner.CliConsoleListener.onCommandFinished: Run flow when ${EXPECT == 'exists'} is true COMPLETED
+18:12:37.206 [ INFO] maestro.cli.runner.CliConsoleListener.onCommandStart: Run flow when ${EXPECT != 'exists'} is true RUNNING
+18:12:37.207 [ INFO] maestro.orchestra.Orchestra.executeSubflowCommands: [Command execution subflow] CommandSkipped: null
+18:12:37.207 [ INFO] maestro.cli.runner.CliConsoleListener.onCommandFinished: Run flow when ${EXPECT != 'exists'} is true SKIPPED
+18:12:37.207 [ INFO] maestro.cli.runner.CliConsoleListener.onCommandStart: Run flow when id: day-total-${ISO} is visible RUNNING
+18:12:37.285 [ INFO] maestro.cli.runner.CliConsoleListener.onCommandStart: Copy text from element with id: day-total-${ISO} RUNNING
+18:12:37.368 [ INFO] maestro.cli.runner.CliConsoleListener.onCommandFinished: Copy text from element with id: day-total-${ISO} COMPLETED
+18:12:37.368 [ INFO] maestro.cli.runner.CliConsoleListener.onCommandStart: Run ../scripts/parse-duration.js RUNNING
+18:12:37.371 [ INFO] maestro.cli.runner.CliConsoleListener.onCommandFinished: Run ../scripts/parse-duration.js COMPLETED
+18:12:37.371 [ INFO] maestro.cli.runner.CliConsoleListener.onCommandStart: Denní součet ${ISO} jde přečíst ve formátu X h YY min RUNNING
+18:12:37.372 [ INFO] maestro.cli.runner.CliConsoleListener.onCommandFinished: Denní součet ${ISO} jde přečíst ve formátu X h YY min COMPLETED
+18:12:37.373 [ INFO] maestro.cli.runner.CliConsoleListener.onCommandFinished: Run flow when id: day-total-${ISO} is visible COMPLETED
+18:12:37.373 [ INFO] maestro.cli.runner.CliConsoleListener.onCommandStart: Run flow when id: day-total-${ISO} is not visible RUNNING
+18:12:44.404 [ INFO] maestro.orchestra.Orchestra.executeSubflowCommands: [Command execution subflow] CommandSkipped: null
+18:12:44.404 [ INFO] maestro.cli.runner.CliConsoleListener.onCommandFinished: Run flow when id: day-total-${ISO} is not visible SKIPPED
+18:12:44.404 [ INFO] maestro.cli.runner.CliConsoleListener.onCommandStart: Run flow when ${EXPECT == 'empty'} is true RUNNING
+18:12:44.408 [ INFO] maestro.orchestra.Orchestra.executeSubflowCommands: [Command execution subflow] CommandSkipped: null
+18:12:44.408 [ INFO] maestro.cli.runner.CliConsoleListener.onCommandFinished: Run flow when ${EXPECT == 'empty'} is true SKIPPED
+18:12:44.408 [ INFO] maestro.cli.runner.CliConsoleListener.onCommandStart: Denní součet ${ISO} je uložený v ${SLOT} RUNNING
+18:12:44.409 [ INFO] maestro.cli.runner.CliConsoleListener.onCommandFinished: Denní součet ${ISO} je uložený v ${SLOT} COMPLETED
+18:12:44.411 [ INFO] maestro.cli.runner.CliConsoleListener.onCommandFinished: Run ../../subflows/capture-day-total.yaml COMPLETED
+18:12:44.411 [ INFO] maestro.cli.runner.CliConsoleListener.onCommandStart: Po přidání vzrostl denní součet o 2 h RUNNING
+18:12:44.411 [ INFO] maestro.cli.runner.CliConsoleListener.onCommandFinished: Po přidání vzrostl denní součet o 2 h COMPLETED
+18:12:44.411 [ INFO] maestro.cli.runner.CliConsoleListener.onCommandStart: Scrolling DOWN until "T10-SMAZAT" is visible with speed 40, visibility percentage 100%, timeout 15000 ms, with centering disabled RUNNING
+18:12:44.453 [ INFO] maestro.orchestra.Orchestra.scrollUntilVisible: Scrolling try count: 0, DeviceWidth: 1080, DeviceWidth: 2400
+18:12:44.454 [ INFO] maestro.orchestra.Orchestra.scrollUntilVisible: Element bounds: Bounds(x=73, y=1455, width=933, height=53)
+18:12:44.454 [ INFO] maestro.orchestra.Orchestra.scrollUntilVisible: Visibility Percent: 1.0
+18:12:44.454 [ INFO] maestro.orchestra.Orchestra.scrollUntilVisible: Command centerElement: ScrollUntilVisibleCommand(selector=ElementSelector(textRegex=T10-SMAZAT, idRegex=null, size=null, below=null, above=null, leftOf=null, rightOf=null, containsChild=null, containsDescendants=null, traits=null, index=null, enabled=null, optional=false, selected=null, checked=null, focused=null, childOf=null, css=null), direction=DOWN, scrollDuration=601, visibilityPercentage=100, timeout=15000, waitToSettleTimeoutMs=null, centerElement=false, originalSpeedValue=40, label=null, optional=false).centerElement
+18:12:44.454 [ INFO] maestro.orchestra.Orchestra.scrollUntilVisible: visibilityPercentageNormalized: 1.0
+18:12:44.454 [ INFO] maestro.cli.runner.CliConsoleListener.onCommandFinished: Scrolling DOWN until "T10-SMAZAT" is visible with speed 40, visibility percentage 100%, timeout 15000 ms, with centering disabled COMPLETED
+18:12:44.454 [ INFO] maestro.cli.runner.CliConsoleListener.onCommandStart: Tap on id: entry-delete-.*, Below "T10-SMAZAT" RUNNING
+18:12:44.540 [ INFO] maestro.Maestro.tap-HgV9Ck0: Tapping on element:  UiElement(treeNode=TreeNode(attributes={text=, accessibilityText=Smazat záznam, hintText=, ignoreBoundsFiltering=false, resource-id=entry-delete-16, clickable=true, bounds=[813,1523][1008,1618], enabled=true, focused=false, checked=false, scrollable=false, selected=false, class=android.widget.Button, important-for-accessibility=true, error=}, children=[TreeNode(attributes={text=Smazat, accessibilityText=, hintText=, ignoreBoundsFiltering=false, resource-id=, clickable=false, bounds=[847,1544][973,1595], enabled=true, focused=false, checked=false, scrollable=false, selected=false, class=android.widget.TextView, important-for-accessibility=false, error=}, children=[], clickable=false, enabled=true, focused=false, checked=false, selected=false)], clickable=true, enabled=true, focused=false, checked=false, selected=false), bounds=Bounds(x=813, y=1523, width=195, height=95))
+18:12:45.739 [ INFO] maestro.Maestro.tap-HgV9Ck0: Tap aimed via settled hierarchy
+18:12:45.741 [ INFO] maestro.Maestro.hierarchyBasedTap-ogj28Uc: Tapping at (910, 1570) using hierarchy based logic for wait
+18:12:46.651 [ INFO] maestro.Maestro.hierarchyBasedTap-ogj28Uc: Something has changed in the UI judging by view hierarchy. Proceed.
+18:12:46.652 [ INFO] maestro.cli.runner.CliConsoleListener.onCommandFinished: Tap on id: entry-delete-.*, Below "T10-SMAZAT" COMPLETED
+18:12:46.652 [ INFO] maestro.cli.runner.CliConsoleListener.onCommandStart: Take screenshot t10-po-smazani RUNNING
+18:12:46.653 [ INFO] maestro.Maestro.takeScreenshot: Taking screenshot
+18:12:46.654 [TRACE] maestro.utils.ScreenshotUtils.takeScreenshot: Taking screenshot to output sink
+18:12:46.799 [ INFO] maestro.cli.runner.CliConsoleListener.onCommandFinished: Take screenshot t10-po-smazani COMPLETED
+18:12:46.799 [ INFO] maestro.cli.runner.CliConsoleListener.onCommandStart: Run ../../subflows/capture-day-total.yaml RUNNING
+18:12:46.801 [ INFO] maestro.cli.runner.CliConsoleListener.onCommandStart: Define variables RUNNING
+18:12:46.802 [ INFO] maestro.cli.runner.CliConsoleListener.onCommandFinished: Define variables COMPLETED
+18:12:46.802 [ INFO] maestro.cli.runner.CliConsoleListener.onCommandStart: Apply configuration RUNNING
+18:12:46.802 [ INFO] maestro.cli.runner.CliConsoleListener.onCommandFinished: Apply configuration COMPLETED
+18:12:46.802 [ INFO] maestro.cli.runner.CliConsoleListener.onCommandStart: Run ${output[SLOT] = null} RUNNING
+18:12:46.802 [ INFO] maestro.cli.runner.CliConsoleListener.onCommandFinished: Run ${output[SLOT] = null} COMPLETED
+18:12:46.802 [ INFO] maestro.cli.runner.CliConsoleListener.onCommandStart: Den ${ISO} je v aktuálním měsíci RUNNING
+18:12:46.803 [ INFO] maestro.cli.runner.CliConsoleListener.onCommandFinished: Den ${ISO} je v aktuálním měsíci COMPLETED
+18:12:46.803 [ INFO] maestro.cli.runner.CliConsoleListener.onCommandStart: Tap on id: tab-timesheet RUNNING
+18:12:46.851 [ INFO] maestro.Maestro.tap-HgV9Ck0: Tapping on element:  UiElement(treeNode=TreeNode(attributes={text=, accessibilityText=Výkaz, hintText=, ignoreBoundsFiltering=false, resource-id=tab-timesheet, clickable=true, bounds=[270,2190][540,2337], enabled=true, focused=false, checked=false, scrollable=false, selected=true, class=android.view.View, important-for-accessibility=true, error=}, children=[TreeNode(attributes={text=, accessibilityText=, hintText=, ignoreBoundsFiltering=false, resource-id=, clickable=false, bounds=[312,2190][498,2198], enabled=true, focused=false, checked=false, scrollable=false, selected=true, class=android.view.ViewGroup, important-for-accessibility=false, error=}, children=[], clickable=false, enabled=true, focused=false, checked=false, selected=true), TreeNode(attributes={text=Výkaz, accessibilityText=, hintText=, ignoreBoundsFiltering=false, resource-id=, clickable=false, bounds=[354,2238][455,2289], enabled=true, focused=false, checked=false, scrollable=false, selected=true, class=android.widget.TextView, important-for-accessibility=false, error=}, children=[], clickable=false, enabled=true, focused=false, checked=false, selected=true)], clickable=true, enabled=true, focused=false, checked=false, selected=true), bounds=Bounds(x=270, y=2190, width=270, height=147))
+18:12:48.060 [ INFO] maestro.Maestro.tap-HgV9Ck0: Tap aimed via settled hierarchy
+18:12:48.062 [ INFO] maestro.Maestro.hierarchyBasedTap-ogj28Uc: Tapping at (405, 2263) using hierarchy based logic for wait
+18:12:48.320 [ INFO] maestro.cli.runner.CliConsoleListener.onCommandFinished: Tap on id: tab-timesheet COMPLETED
+18:12:48.320 [ INFO] maestro.cli.runner.CliConsoleListener.onCommandStart: Scrolling UP until id: btn-manual-entry is visible with speed 40, visibility percentage 100%, timeout 10000 ms, with centering disabled RUNNING
+18:12:48.409 [ INFO] maestro.orchestra.Orchestra.scrollUntilVisible: Scrolling try count: 0, DeviceWidth: 1080, DeviceWidth: 2400
+18:12:48.409 [ INFO] maestro.orchestra.Orchestra.scrollUntilVisible: Element bounds: Bounds(x=42, y=664, width=996, height=126)
+18:12:48.409 [ INFO] maestro.orchestra.Orchestra.scrollUntilVisible: Visibility Percent: 1.0
+18:12:48.409 [ INFO] maestro.orchestra.Orchestra.scrollUntilVisible: Command centerElement: ScrollUntilVisibleCommand(selector=ElementSelector(textRegex=null, idRegex=btn-manual-entry, size=null, below=null, above=null, leftOf=null, rightOf=null, containsChild=null, containsDescendants=null, traits=null, index=null, enabled=null, optional=false, selected=null, checked=null, focused=null, childOf=null, css=null), direction=UP, scrollDuration=601, visibilityPercentage=100, timeout=10000, waitToSettleTimeoutMs=null, centerElement=false, originalSpeedValue=40, label=null, optional=false).centerElement
+18:12:48.409 [ INFO] maestro.orchestra.Orchestra.scrollUntilVisible: visibilityPercentageNormalized: 1.0
+18:12:48.409 [ INFO] maestro.cli.runner.CliConsoleListener.onCommandFinished: Scrolling UP until id: btn-manual-entry is visible with speed 40, visibility percentage 100%, timeout 10000 ms, with centering disabled COMPLETED
+18:12:48.409 [ INFO] maestro.cli.runner.CliConsoleListener.onCommandStart: Assert that id: month-total is visible RUNNING
+18:12:48.496 [ INFO] maestro.cli.runner.CliConsoleListener.onCommandFinished: Assert that id: month-total is visible COMPLETED
+18:12:48.496 [ INFO] maestro.cli.runner.CliConsoleListener.onCommandStart: Run flow when ${EXPECT == 'exists'} is true RUNNING
+18:12:48.497 [ INFO] maestro.orchestra.Orchestra.executeSubflowCommands: [Command execution subflow] CommandSkipped: null
+18:12:48.497 [ INFO] maestro.cli.runner.CliConsoleListener.onCommandFinished: Run flow when ${EXPECT == 'exists'} is true SKIPPED
+18:12:48.497 [ INFO] maestro.cli.runner.CliConsoleListener.onCommandStart: Run flow when ${EXPECT != 'exists'} is true RUNNING
+18:12:48.497 [ INFO] maestro.cli.runner.CliConsoleListener.onCommandStart: Hledám den ${ISO} (varování = den je prázdný) RUNNING
+18:12:48.592 [ INFO] maestro.orchestra.Orchestra.scrollUntilVisible: Scrolling try count: 0, DeviceWidth: 1080, DeviceWidth: 2400
+18:12:48.592 [ INFO] maestro.orchestra.Orchestra.scrollUntilVisible: Element bounds: Bounds(x=783, y=853, width=223, height=57)
+18:12:48.592 [ INFO] maestro.orchestra.Orchestra.scrollUntilVisible: Visibility Percent: 1.0
+18:12:48.592 [ INFO] maestro.orchestra.Orchestra.scrollUntilVisible: Command centerElement: ScrollUntilVisibleCommand(selector=ElementSelector(textRegex=null, idRegex=day-total-2026-11-20, size=null, below=null, above=null, leftOf=null, rightOf=null, containsChild=null, containsDescendants=null, traits=null, index=null, enabled=null, optional=false, selected=null, checked=null, focused=null, childOf=null, css=null), direction=DOWN, scrollDuration=601, visibilityPercentage=100, timeout=8000, waitToSettleTimeoutMs=null, centerElement=false, originalSpeedValue=40, label=Hledám den 2026-11-20 (varování = den je prázdný), optional=true).centerElement
+18:12:48.592 [ INFO] maestro.orchestra.Orchestra.scrollUntilVisible: visibilityPercentageNormalized: 1.0
+18:12:48.592 [ INFO] maestro.cli.runner.CliConsoleListener.onCommandFinished: Hledám den ${ISO} (varování = den je prázdný) COMPLETED
+18:12:48.592 [ INFO] maestro.cli.runner.CliConsoleListener.onCommandFinished: Run flow when ${EXPECT != 'exists'} is true COMPLETED
+18:12:48.592 [ INFO] maestro.cli.runner.CliConsoleListener.onCommandStart: Run flow when id: day-total-${ISO} is visible RUNNING
+18:12:48.681 [ INFO] maestro.cli.runner.CliConsoleListener.onCommandStart: Copy text from element with id: day-total-${ISO} RUNNING
+18:12:48.761 [ INFO] maestro.cli.runner.CliConsoleListener.onCommandFinished: Copy text from element with id: day-total-${ISO} COMPLETED
+18:12:48.761 [ INFO] maestro.cli.runner.CliConsoleListener.onCommandStart: Run ../scripts/parse-duration.js RUNNING
+18:12:48.764 [ INFO] maestro.cli.runner.CliConsoleListener.onCommandFinished: Run ../scripts/parse-duration.js COMPLETED
+18:12:48.764 [ INFO] maestro.cli.runner.CliConsoleListener.onCommandStart: Denní součet ${ISO} jde přečíst ve formátu X h YY min RUNNING
+18:12:48.765 [ INFO] maestro.cli.runner.CliConsoleListener.onCommandFinished: Denní součet ${ISO} jde přečíst ve formátu X h YY min COMPLETED
+18:12:48.765 [ INFO] maestro.cli.runner.CliConsoleListener.onCommandFinished: Run flow when id: day-total-${ISO} is visible COMPLETED
+18:12:48.765 [ INFO] maestro.cli.runner.CliConsoleListener.onCommandStart: Run flow when id: day-total-${ISO} is not visible RUNNING
+18:12:55.836 [ INFO] maestro.orchestra.Orchestra.executeSubflowCommands: [Command execution subflow] CommandSkipped: null
+18:12:55.836 [ INFO] maestro.cli.runner.CliConsoleListener.onCommandFinished: Run flow when id: day-total-${ISO} is not visible SKIPPED
+18:12:55.836 [ INFO] maestro.cli.runner.CliConsoleListener.onCommandStart: Run flow when ${EXPECT == 'empty'} is true RUNNING
+18:12:55.839 [ INFO] maestro.orchestra.Orchestra.executeSubflowCommands: [Command execution subflow] CommandSkipped: null
+18:12:55.839 [ INFO] maestro.cli.runner.CliConsoleListener.onCommandFinished: Run flow when ${EXPECT == 'empty'} is true SKIPPED
+18:12:55.839 [ INFO] maestro.cli.runner.CliConsoleListener.onCommandStart: Denní součet ${ISO} je uložený v ${SLOT} RUNNING
+18:12:55.842 [ INFO] maestro.cli.runner.CliConsoleListener.onCommandFinished: Denní součet ${ISO} je uložený v ${SLOT} COMPLETED
+18:12:55.842 [ INFO] maestro.cli.runner.CliConsoleListener.onCommandFinished: Run ../../subflows/capture-day-total.yaml COMPLETED
+18:12:55.842 [ INFO] maestro.cli.runner.CliConsoleListener.onCommandStart: Smazaný záznam už ve Výkazu není RUNNING
+18:12:56.510 [ INFO] maestro.cli.runner.CliConsoleListener.onCommandFinished: Smazaný záznam už ve Výkazu není COMPLETED
+18:12:56.510 [ INFO] maestro.cli.runner.CliConsoleListener.onCommandStart: Po smazání se denní součet vrátil na původní hodnotu RUNNING
+18:12:56.599 [ERROR] maestro.orchestra.Orchestra.executeCommands: [Command execution] CommandFailed: Assertion is false: false is true
+18:12:56.693 [ INFO] maestro.Maestro.takeScreenshot: Taking screenshot
+18:12:56.695 [TRACE] maestro.utils.ScreenshotUtils.takeScreenshot: Taking screenshot to output sink
+18:12:56.846 [ INFO] maestro.cli.runner.CliConsoleListener.onCommandFinished: Po smazání se denní součet vrátil na původní hodnotu FAILED

@@ -1,0 +1,33 @@
+appId: cz.demo.dochazka
+name: "Rucni zaznam 01b - Lekar se neodecita (bod 7, BUG-012)"
+tags:
+  - regression
+  - vypocty
+  - known-bug
+---
+- runScript: ../../scripts/dates.js
+- runFlow: ../../subflows/start-as-jan.yaml
+# Lékař se podle bodu 7 počítá jako odpracovaný čas. Na verzi 1.0 selže (BUG-012).
+# Nejdřív Práce 17:00–21:00 (kontrola, že měření funguje), pak jedno přerušení uvnitř.
+- runFlow:
+    file: ../../subflows/capture-day-total.yaml
+    env: {ISO: "${output.twoDaysAgoIso}", SLOT: before, EXPECT: any}
+- runFlow:
+    file: ../../subflows/add-manual-entry.yaml
+    env: {DATE: "${output.twoDaysAgo}", START: "17:00", END: "21:00", NOTE: "T01B-PRACE", TYPE: "Práce"}
+- runFlow:
+    file: ../../subflows/capture-day-total.yaml
+    env: {ISO: "${output.twoDaysAgoIso}", SLOT: work, EXPECT: exists}
+- assertTrue:
+    condition: ${output.work - output.before == 240}
+    label: "Práce přidala 4 h"
+- runFlow:
+    file: ../../subflows/add-manual-entry.yaml
+    env: {DATE: "${output.twoDaysAgo}", START: "19:00", END: "19:30", NOTE: "T01B-LEKAR", TYPE: "Lékař"}
+- runFlow:
+    file: ../../subflows/capture-day-total.yaml
+    env: {ISO: "${output.twoDaysAgoIso}", SLOT: after, EXPECT: exists}
+- takeScreenshot: 01b-preruseni-lekar
+- assertTrue:
+    condition: ${output.after - output.work == 0}
+    label: "Lékař se neodečetl (přírůstek 0)"

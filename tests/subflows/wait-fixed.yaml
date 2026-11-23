@@ -1,0 +1,11 @@
+# ZÁMĚRNÉ ČEKÁNÍ. Maestro nemá pauzu, proto se čeká na prvek, který v aplikaci neexistuje.
+# Krok vždy vyprší a díky optional: true skončí jen varováním. Varování je tady v pořádku.
+# Parametry: MS (jak dlouho čekat, v milisekundách)
+appId: cz.demo.dochazka
+---
+- extendedWaitUntil:
+    visible:
+      id: "zamerne-cekani-tento-prvek-neexistuje"
+    timeout: ${MS}
+    optional: true
+    label: "Záměrné čekání ${MS} ms (varování = v pořádku)"

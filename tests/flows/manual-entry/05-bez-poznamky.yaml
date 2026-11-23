@@ -1,0 +1,11 @@
+appId: cz.demo.dochazka
+name: "Rucni zaznam 05 - bez poznamky odmitnuto (bod 10)"
+tags:
+  - regression
+  - validace
+---
+- runScript: ../../scripts/dates.js
+- runFlow: ../../subflows/start-as-jan.yaml
+- runFlow:
+    file: ../../subflows/expect-manual-entry-error.yaml
+    env: {DATE: "${output.twoDaysAgo}", START: "17:00", END: "18:00", NOTE: "NONE", TYPE: "Práce", ERR: ".*[Pp]oznámk.*", SHOT: "t05-bez-poznamky"}

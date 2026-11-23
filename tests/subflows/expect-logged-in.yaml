@@ -1,0 +1,6 @@
+# Ověří, že je uživatel přihlášený: vidí tab Přehled (zaměstnanec) nebo Schvalování (vedoucí).
+appId: cz.demo.dochazka
+---
+- assertVisible:
+    id: "tab-overview|tab-approvals"
+    label: "Přihlášen (vidí Přehled nebo Schvalování)"

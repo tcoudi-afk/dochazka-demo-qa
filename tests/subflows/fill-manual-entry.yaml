@@ -1,0 +1,42 @@
+# Otevře formulář ručního záznamu a vyplní ho. Neukládá.
+# Parametry: DATE (DD.MM.RRRR), START, END (HH:MM), NOTE (text, nebo NONE = nevyplňovat),
+#            TYPE (Práce | Oběd | Lékař | Služební cesta; Práce je výchozí)
+appId: cz.demo.dochazka
+---
+- tapOn:
+    id: "tab-timesheet"
+- scrollUntilVisible:
+    element:
+      id: "btn-manual-entry"
+    direction: UP
+    timeout: 10000
+- tapOn:
+    id: "btn-manual-entry"
+- tapOn:
+    id: "manual-date"
+- inputText: ${DATE}
+- tapOn:
+    id: "manual-start"
+- inputText: ${START}
+- tapOn:
+    id: "manual-end"
+- inputText: ${END}
+# Klávesnice se zavírá klepnutím na nadpis formuláře „Ruční záznam“ (neinteraktivní text, klepnutí mimo pole ji v ScrollView zavře).
+# hideKeyboard na emulátoru selhával („Couldn't hide the keyboard“), viz tests/README.md, Pravidla.
+- tapOn:
+    text: "Ruční záznam"
+- runFlow:
+    when:
+      true: ${TYPE != 'Práce'}
+    commands:
+      - tapOn: ${TYPE}
+- runFlow:
+    when:
+      true: ${NOTE != 'NONE'}
+    commands:
+      - tapOn:
+          id: "manual-note"
+      - inputText: ${NOTE}
+      # Popisek „Typ“ je těsně nad poznámkou, takže je vidět i po posunu formuláře.
+      - tapOn:
+          text: "Typ"

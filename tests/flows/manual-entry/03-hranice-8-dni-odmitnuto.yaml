@@ -1,0 +1,11 @@
+appId: cz.demo.dochazka
+name: "Rucni zaznam 03 - 8 dni zpetne odmitnuto (bod 10)"
+tags:
+  - regression
+  - validace
+---
+- runScript: ../../scripts/dates.js
+- runFlow: ../../subflows/start-as-jan.yaml
+- runFlow:
+    file: ../../subflows/expect-manual-entry-error.yaml
+    env: {DATE: "${output.eightDaysAgo}", START: "17:00", END: "18:00", NOTE: "T03-8DNI", TYPE: "Práce", ERR: ".*7 dní.*", SHOT: "t03-8-dni-zpetne"}

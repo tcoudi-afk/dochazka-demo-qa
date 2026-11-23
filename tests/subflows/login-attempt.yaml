@@ -1,0 +1,13 @@
+# Jeden pokus o přihlášení: vyplní, odešle, uloží screenshot a text chyby do logu.
+# Parametry: EMAIL, PASSWORD, SHOT
+appId: cz.demo.dochazka
+---
+- runFlow:
+    file: login-fill.yaml
+    env:
+      EMAIL: ${EMAIL}
+      PASSWORD: ${PASSWORD}
+- runFlow:
+    file: login-submit-record.yaml
+    env:
+      SHOT: ${SHOT}

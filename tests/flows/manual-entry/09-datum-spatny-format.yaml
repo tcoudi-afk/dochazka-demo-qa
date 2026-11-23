@@ -1,0 +1,13 @@
+appId: cz.demo.dochazka
+name: "Rucni zaznam 09 - datum ve spatnem formatu odmitnuto (bod 10)"
+tags:
+  - regression
+  - validace
+---
+- runScript: ../../scripts/dates.js
+- runFlow: ../../subflows/start-as-jan.yaml
+# Původně ověřoval podezření BUG-010, to se nepotvrdilo (aplikace formát hlídá správně).
+# Datum bez tečky mezi měsícem a rokem (DD.MMRRRR). Aplikace má chtít DD.MM.RRRR.
+- runFlow:
+    file: ../../subflows/expect-manual-entry-error.yaml
+    env: {DATE: "${output.twoDaysAgoBadFormat}", START: "17:00", END: "18:00", NOTE: "T09-FORMAT", TYPE: "Práce", ERR: ".*DD.MM.RRRR.*", SHOT: "t09-spatny-format"}

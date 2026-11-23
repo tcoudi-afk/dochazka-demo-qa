@@ -1,0 +1,45 @@
+appId: cz.demo.dochazka
+name: "Login L03 - blokace skonci po minute (bod 2)"
+tags:
+  - login
+env:
+  # Hranice blokace v sekundách od jejího skutečného začátku: odeslání prvního pokusu s hláškou
+  # „zablokované“ (output.blockedAt). Předpoklad: blokace 1 min.
+  # BLOCK_CHECK_S: kdy zkusit správné heslo ještě uvnitř blokace (má neprojít)
+  # BLOCK_END_S:   kdy zkusit správné heslo po konci blokace (má projít)
+  BLOCK_CHECK_S: 50
+  BLOCK_END_S: 65
+---
+# Čeká se dopočítaným záměrným čekáním (subflow wait-fixed), aby pokus odešel co nejblíž
+# zadané sekundě. Skutečný počet sekund od začátku blokace vypíše log ([LOGIN] …).
+# Že se proměnná dosadí i do timeout, potvrdil běh 22. 11. 20:30 (pokus odešel 53 s po hranici 50 s).
+- launchApp:
+    clearState: true
+- evalScript: ${output.blockedAt = 0}
+- runFlow:
+    file: ../../subflows/login-block-jan.yaml
+    env: {PREFIX: "l03-jan"}
+# Pokus uvnitř blokace: formulář se vyplní předem, čeká se až těsně před odesláním.
+- runFlow:
+    file: ../../subflows/login-fill.yaml
+    env: {EMAIL: "jan.novak@demo.cz", PASSWORD: "Demo2026!"}
+- evalScript: ${output.waitMs = Math.max(0, BLOCK_CHECK_S * 1000 - (Date.now() - output.blockedAt))}
+- runFlow:
+    file: ../../subflows/wait-fixed.yaml
+    env: {MS: "${output.waitMs}"}
+- runFlow:
+    file: ../../subflows/login-submit-record.yaml
+    env: {SHOT: "l03-spravne-heslo-uvnitr-blokace"}
+- runFlow: ../../subflows/expect-logged-out.yaml
+# Pokus po konci blokace
+- runFlow:
+    file: ../../subflows/login-fill.yaml
+    env: {EMAIL: "jan.novak@demo.cz", PASSWORD: "Demo2026!"}
+- evalScript: ${output.waitMs = Math.max(0, BLOCK_END_S * 1000 - (Date.now() - output.blockedAt))}
+- runFlow:
+    file: ../../subflows/wait-fixed.yaml
+    env: {MS: "${output.waitMs}"}
+- runFlow:
+    file: ../../subflows/login-submit-record.yaml
+    env: {SHOT: "l03-spravne-heslo-po-konci-blokace"}
+- runFlow: ../../subflows/expect-logged-in.yaml

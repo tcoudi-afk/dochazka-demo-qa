@@ -1,0 +1,21 @@
+# Vyplní přihlašovací formulář. Neodesílá. Pole nejdřív smaže, protože po neúspěšném pokusu
+# v nich může zůstat předchozí text.
+# Parametry: EMAIL, PASSWORD
+appId: cz.demo.dochazka
+---
+- extendedWaitUntil:
+    visible:
+      id: "login-submit"
+    timeout: 10000
+- tapOn:
+    id: "login-email"
+- eraseText: 60
+- inputText: ${EMAIL}
+- tapOn:
+    id: "login-password"
+- eraseText: 60
+- inputText: ${PASSWORD}
+# Klávesnice se zavírá klepnutím na nadpis „Docházka Demo“ (neinteraktivní text, klepnutí mimo pole ji v ScrollView zavře).
+# hideKeyboard na emulátoru selhával („Couldn't hide the keyboard“), viz tests/README.md, Pravidla.
+- tapOn:
+    text: "Docházka Demo"

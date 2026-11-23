@@ -1,0 +1,41 @@
+# Sonda: čistý start, přihlášení a nastavení jazyka.
+# Parametry (předává probe.mjs): EMAIL, PASSWORD, PROBE_LANG (cs | sk | en)
+appId: cz.demo.dochazka
+---
+- launchApp:
+    clearState: true
+- tapOn:
+    id: "login-email"
+- inputText: ${EMAIL}
+- tapOn:
+    id: "login-password"
+- inputText: ${PASSWORD}
+# Klávesnice se zavírá klepnutím na nadpis „Docházka Demo“ místo hideKeyboard (viz tests/README.md).
+- tapOn:
+    text: "Docházka Demo"
+- tapOn:
+    id: "login-submit"
+# tab-settings má každá role (vedoucí nemá Přehled, jen Schvalování a Nastavení).
+- extendedWaitUntil:
+    visible:
+      id: "tab-settings"
+    timeout: 15000
+
+# Jazyk se přepíná v Nastavení. Názvy jazyků jsou ve všech jazycích stejné.
+- runFlow:
+    when:
+      true: ${PROBE_LANG == 'sk' || PROBE_LANG == 'en'}
+    commands:
+      - tapOn:
+          id: "tab-settings"
+- runFlow:
+    when:
+      true: ${PROBE_LANG == 'sk'}
+    commands:
+      - tapOn: "Slovenčina"
+- runFlow:
+    when:
+      true: ${PROBE_LANG == 'en'}
+    commands:
+      - tapOn: "English"
+- waitForAnimationToEnd

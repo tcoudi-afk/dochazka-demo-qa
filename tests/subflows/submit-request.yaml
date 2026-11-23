@@ -1,0 +1,27 @@
+# Vyplní a odešle žádost a ověří, že vznikla ve stavu Čeká.
+# Parametry: jako fill-request.yaml
+# Kontrolu stavu dělá na záložce Žádosti. Testy začínají clearState, takže žádost je v seznamu jediná
+# a dynamické request-state-<id> stačí hledat regexem.
+appId: cz.demo.dochazka
+---
+- runFlow:
+    file: fill-request.yaml
+    env:
+      TYPE: ${TYPE}
+      FROM: ${FROM}
+      TO: ${TO}
+- tapOn:
+    id: "request-submit"
+- assertNotVisible:
+    id: "request-error"
+    label: "Aplikace žádost přijala bez chyby"
+- tapOn:
+    id: "tab-requests"
+- extendedWaitUntil:
+    visible:
+      id: "request-state-.*"
+    timeout: 10000
+- assertVisible:
+    id: "request-state-.*"
+    text: "Čeká"
+    label: "Nová žádost je ve stavu Čeká"

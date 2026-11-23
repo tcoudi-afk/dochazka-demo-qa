@@ -1,0 +1,13 @@
+# Sonda: přechod na jednu obrazovku. Nespouští aplikaci znovu, navazuje na setup.yaml.
+# Parametry: TAB (testID tabu), OPEN (testID tlačítka, které otevře formulář, nebo "none")
+appId: cz.demo.dochazka
+---
+- tapOn:
+    id: ${TAB}
+- runFlow:
+    when:
+      true: ${OPEN != 'none'}
+    commands:
+      - tapOn:
+          id: ${OPEN}
+- waitForAnimationToEnd

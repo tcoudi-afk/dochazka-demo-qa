@@ -1,0 +1,20 @@
+# Přihlášení. Parametry: EMAIL, PASSWORD
+appId: cz.demo.dochazka
+---
+- tapOn:
+    id: "login-email"
+- inputText: ${EMAIL}
+- tapOn:
+    id: "login-password"
+- inputText: ${PASSWORD}
+# Klávesnice se zavírá klepnutím na nadpis „Docházka Demo“ (neinteraktivní text, klepnutí mimo pole ji v ScrollView zavře).
+# hideKeyboard na emulátoru selhával („Couldn't hide the keyboard“), viz tests/README.md, Pravidla.
+- tapOn:
+    text: "Docházka Demo"
+- tapOn:
+    id: "login-submit"
+# tab-settings má každá role (zaměstnanec i vedoucí)
+- extendedWaitUntil:
+    visible:
+      id: "tab-settings"
+    timeout: 15000

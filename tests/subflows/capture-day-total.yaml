@@ -1,0 +1,83 @@
+# Přečte denní součet ve Výkazu pro den ISO (RRRR-MM-DD) a uloží ho v minutách do output[SLOT].
+# Parametry: ISO, SLOT, EXPECT
+#   EXPECT: exists = den má ve Výkazu být (po přidání záznamu). Když chybí nebo nejde přečíst, krok selže.
+#           empty  = den má být prázdný. Ověří, že řádek dne chybí, a uloží 0.
+#           any    = den může být prázdný i ne (měření před akcí). Prázdný den = 0, jinak se součet přečte.
+# Prázdný den ve Výkazu nemá řádek, proto je 0 u chybějícího dne správná hodnota. Platí to ale jen tehdy,
+# když je jisté, že se hledalo na správném místě: Výkaz, aktuální měsíc, seznam posunutý nahoru.
+appId: cz.demo.dochazka
+---
+- evalScript: ${output[SLOT] = null}
+
+# 1. Správné místo: Výkaz ukazuje jen aktuální měsíc, jiný měsíc test zatím neumí (review V1).
+- assertTrue:
+    condition: ${ISO.substring(0, 7) == output.thisMonthIso}
+    label: "Den ${ISO} je v aktuálním měsíci"
+- tapOn:
+    id: "tab-timesheet"
+- scrollUntilVisible:
+    element:
+      id: "btn-manual-entry"
+    direction: UP
+    timeout: 10000
+- assertVisible:
+    id: "month-total"
+
+# 2. Hledání dne (seznam se posouvá dolů od začátku)
+- runFlow:
+    when:
+      true: ${EXPECT == 'exists'}
+    commands:
+      - scrollUntilVisible:
+          element:
+            id: "day-total-${ISO}"
+          timeout: 8000
+          label: "Den ${ISO} je ve Výkazu"
+- runFlow:
+    when:
+      true: ${EXPECT != 'exists'}
+    commands:
+      - scrollUntilVisible:
+          element:
+            id: "day-total-${ISO}"
+          timeout: 8000
+          optional: true
+          label: "Hledám den ${ISO} (varování = den je prázdný)"
+
+# 3a. Den je vidět: přečíst a ověřit, že text šel převést
+- runFlow:
+    when:
+      visible:
+        id: "day-total-${ISO}"
+    commands:
+      - copyTextFrom:
+          id: "day-total-${ISO}"
+      - runScript:
+          file: ../scripts/parse-duration.js
+          env:
+            SLOT: ${SLOT}
+      - assertTrue:
+          condition: ${output[SLOT] !== null}
+          label: "Denní součet ${ISO} jde přečíst ve formátu X h YY min"
+
+# 3b. Den není vidět: prázdný den = 0
+- runFlow:
+    when:
+      notVisible:
+        id: "day-total-${ISO}"
+    commands:
+      - evalScript: ${output[SLOT] = 0}
+
+# 4. Den měl být prázdný: řádek dne nesmí existovat
+- runFlow:
+    when:
+      true: ${EXPECT == 'empty'}
+    commands:
+      - assertNotVisible:
+          id: "day-${ISO}"
+          label: "Den ${ISO} je prázdný (nemá řádek ve Výkazu)"
+
+# 5. Pojistka: hodnota je vždy číslo
+- assertTrue:
+    condition: ${typeof output[SLOT] == 'number'}
+    label: "Denní součet ${ISO} je uložený v ${SLOT}"

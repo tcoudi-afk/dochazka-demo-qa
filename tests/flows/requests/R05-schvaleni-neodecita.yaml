@@ -1,0 +1,47 @@
+appId: cz.demo.dochazka
+name: "Zadosti R05 - vedouci schvali zadost, zustatek se dal nemeni"
+tags:
+  - regression
+  - zadosti
+  - schvalovani
+---
+- runScript: ../../scripts/dates.js
+- assertTrue:
+    condition: ${output.vacDay !== null}
+    label: "Letos je ještě pracovní den za 2 a více dní (koncem prosince není, testy se drží v aktuálním roce)"
+- runFlow: ../../subflows/start-as-jan.yaml
+- runFlow:
+    file: ../../subflows/capture-balance.yaml
+    env: {SLOT: before}
+- runFlow:
+    file: ../../subflows/submit-request.yaml
+    env: {TYPE: "Dovolená", FROM: "${output.vacDay}", TO: "${output.vacDay}"}
+- runFlow:
+    file: ../../subflows/capture-balance.yaml
+    env: {SLOT: submitted}
+- assertTrue:
+    condition: ${output.submitted - output.before == -1}
+    label: "Odeslání odečetlo 1 den"
+# Přepnutí účtu bez clearState: žádost musí vedoucímu zůstat. Žádosti BUG-007 nezasahuje.
+- runFlow: ../../subflows/logout.yaml
+- runFlow:
+    file: ../../subflows/login.yaml
+    env: {EMAIL: "vedouci@demo.cz", PASSWORD: "Demo2026!"}
+- runFlow:
+    file: ../../subflows/decide-request.yaml
+    env: {ACTION: approve}
+- runFlow: ../../subflows/logout.yaml
+- runFlow:
+    file: ../../subflows/login.yaml
+    env: {EMAIL: "jan.novak@demo.cz", PASSWORD: "Demo2026!"}
+- runFlow:
+    file: ../../subflows/capture-balance.yaml
+    env: {SLOT: after}
+- takeScreenshot: r05-po-schvaleni
+- assertVisible:
+    id: "request-state-.*"
+    text: "Schváleno"
+    label: "Žádost je u Jana ve stavu Schváleno"
+- assertTrue:
+    condition: ${output.after == output.submitted}
+    label: "Schválení nic dalšího neodečetlo"

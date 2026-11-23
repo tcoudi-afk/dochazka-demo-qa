@@ -1,0 +1,25 @@
+# Zablokuje Jana: špatné pokusy za sebou, dokud se neobjeví hláška se slovem „zablokované“
+# (nejvýš 6 pokusů). Začátek blokace uloží login-submit-record.yaml do output.blockedAt.
+# Počet pokusů se neurčuje předem, protože aplikace blokuje dřív, než říká bod 2 (BUG-022).
+# Další špatné pokusy se po začátku blokace už neposílají.
+# Předpoklad: test před voláním nastavil output.blockedAt = 0.
+# Parametry: PREFIX (začátek názvů screenshotů)
+appId: cz.demo.dochazka
+---
+- evalScript: ${output.blockAttempt = 0}
+- repeat:
+    while:
+      true: ${!output.blockedAt && output.blockAttempt < 6}
+    commands:
+      - evalScript: ${output.blockAttempt = output.blockAttempt + 1}
+      - runFlow:
+          file: login-attempt.yaml
+          env:
+            EMAIL: "jan.novak@demo.cz"
+            PASSWORD: "Spatne${output.blockAttempt}!"
+            SHOT: "${PREFIX}-spatne-${output.blockAttempt}"
+- assertTrue:
+    condition: ${output.blockedAt > 0}
+    label: "Blokace nastala (hláška se slovem „zablokované“) nejpozději po 6 špatných pokusech"
+- evalScript: ${console.log('[LOGIN] ' + PREFIX + ' | blokace od ' + output.blockAttempt + '. špatného pokusu')}
+- runFlow: expect-logged-out.yaml

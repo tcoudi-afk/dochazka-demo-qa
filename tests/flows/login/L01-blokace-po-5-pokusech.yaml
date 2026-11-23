@@ -1,0 +1,58 @@
+appId: cz.demo.dochazka
+name: "Login L01 - pokusy 1 az 4 bez blokace, po 5. pokusu neprojde ani spravne heslo (bod 2, BUG-022)"
+tags:
+  - login
+  - known-bug
+---
+# known-bug BUG-022: aplikace blokuje už po 3. špatném pokusu (běh 22. 11. 20:30: pokusy 1–2
+# „Nesprávný e-mail nebo heslo.“, pokus 3 „Přihlášení je na 1 minutu zablokované.“).
+# Na 1.0 má test selhat na kontrole „Pokus 3 bez blokace“.
+# Bod 2: po 5 neúspěšných pokusech se přihlášení na 1 minutu zablokuje.
+# Výklad (review K2): pokusy 1–4 musí projít bez blokace. U 5. pokusu se nic neověřuje, protože bod 2
+# neříká, jestli hlášku o blokaci ukáže už 5. pokus, nebo až další. Nejpozději 6. pokus (správné heslo)
+# už musí být zablokovaný. Na 1.0 hláška o blokaci přijde u 3. pokusu, ten správný výklad nerozhodne.
+# Blokace = hláška se slovem „zablokované“ (output.blockedAt, viz login-submit-record.yaml).
+- launchApp:
+    clearState: true
+- evalScript: ${output.blockedAt = 0}
+- runFlow:
+    file: ../../subflows/login-attempt.yaml
+    env: {EMAIL: "jan.novak@demo.cz", PASSWORD: "Spatne1!", SHOT: "l01-spatne-1"}
+- runFlow: ../../subflows/expect-logged-out.yaml
+- assertTrue:
+    condition: ${!output.blockedAt}
+    label: "Pokus 1 bez blokace"
+- runFlow:
+    file: ../../subflows/login-attempt.yaml
+    env: {EMAIL: "jan.novak@demo.cz", PASSWORD: "Spatne2!", SHOT: "l01-spatne-2"}
+- runFlow: ../../subflows/expect-logged-out.yaml
+- assertTrue:
+    condition: ${!output.blockedAt}
+    label: "Pokus 2 bez blokace"
+- runFlow:
+    file: ../../subflows/login-attempt.yaml
+    env: {EMAIL: "jan.novak@demo.cz", PASSWORD: "Spatne3!", SHOT: "l01-spatne-3"}
+- runFlow: ../../subflows/expect-logged-out.yaml
+- assertTrue:
+    condition: ${!output.blockedAt}
+    label: "Pokus 3 bez blokace (BUG-022)"
+- runFlow:
+    file: ../../subflows/login-attempt.yaml
+    env: {EMAIL: "jan.novak@demo.cz", PASSWORD: "Spatne4!", SHOT: "l01-spatne-4"}
+- runFlow: ../../subflows/expect-logged-out.yaml
+- assertTrue:
+    condition: ${!output.blockedAt}
+    label: "Pokus 4 bez blokace"
+- runFlow:
+    file: ../../subflows/login-attempt.yaml
+    env: {EMAIL: "jan.novak@demo.cz", PASSWORD: "Spatne5!", SHOT: "l01-spatne-5"}
+- runFlow: ../../subflows/expect-logged-out.yaml
+# Pokus 5: bez podmínky na blokaci (viz výklad v hlavičce)
+# 6. pokus správným heslem: blokace už má platit
+- runFlow:
+    file: ../../subflows/login-attempt.yaml
+    env: {EMAIL: "jan.novak@demo.cz", PASSWORD: "Demo2026!", SHOT: "l01-6-spravne-heslo-po-5-spatnych"}
+- runFlow: ../../subflows/expect-logged-out.yaml
+- assertTrue:
+    condition: ${output.blockedAt > 0}
+    label: "Po 5 špatných pokusech je přihlášení zablokované (hláška se slovem „zablokované“ nejpozději u 6. pokusu)"

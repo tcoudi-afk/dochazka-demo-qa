@@ -1,0 +1,105 @@
+appId: cz.demo.dochazka
+name: "Offline O01 - zaznam s prichodem offline se po obnoveni site nezdvoji (BUG-021)"
+tags:
+  - regression
+  - offline
+  - known-bug
+---
+- runScript: ../../scripts/dates.js
+# Na verzi 1.0 selže: záznam, jehož Příchod vznikl za výpadku, se při každém dalším obnovení sítě
+# odešle znovu a ve Výkazu přibude jeho kopie (BUG-021).
+# Délka záznamu se neřeší (Příchod a Odchod ve stejné minutě = 0 min), proto se počítají záznamy dneška.
+# Nespouštět kolem půlnoci: Příchod a Odchod musí být ve stejný den jako todayIso.
+- runFlow: ../../subflows/start-as-jan.yaml
+- runFlow:
+    file: ../../subflows/count-day-entries.yaml
+    env: {ISO: "${output.todayIso}", SLOT: before, EXPECT: any}
+
+# 1. Za výpadku Příchod a Odchod. Na každou změnu stavu se čeká, aby nevznikl dvojklik (BUG-013).
+- runFlow:
+    file: ../../subflows/set-network-outage.yaml
+    env: {STATE: "on"}
+- tapOn:
+    id: "tab-overview"
+- assertVisible:
+    id: "status-text"
+    text: "Mimo práci"
+    label: "Jan je na začátku mimo práci"
+- tapOn:
+    id: "btn-attendance"
+- extendedWaitUntil:
+    visible:
+      id: "status-text"
+      text: "V práci"
+    timeout: 10000
+    label: "Po Příchodu je stav V práci"
+- tapOn:
+    id: "btn-attendance"
+- extendedWaitUntil:
+    visible:
+      id: "status-text"
+      text: "Mimo práci"
+    timeout: 10000
+    label: "Po Odchodu je stav Mimo práci"
+- assertVisible:
+    id: "sync-indicator"
+    text: "Čeká na odeslání.*"
+    label: "Záznam za výpadku čeká na odeslání"
+
+# 2. Obnovení sítě: záznam se odešle jednou
+- runFlow:
+    file: ../../subflows/set-network-outage.yaml
+    env: {STATE: "off"}
+- runFlow: ../../subflows/wait-all-sent.yaml
+- runFlow:
+    file: ../../subflows/count-day-entries.yaml
+    env: {ISO: "${output.todayIso}", SLOT: synced, EXPECT: exists}
+- assertTrue:
+    condition: ${output.synced - output.before == 1}
+    label: "Příchod a Odchod vytvořily právě jeden záznam"
+- assertNotVisible:
+    text: ".*čeká na odeslání.*"
+    label: "Po obnovení sítě štítek čeká na odeslání zmizel"
+- runFlow:
+    file: ../../subflows/capture-day-total.yaml
+    env: {ISO: "${output.todayIso}", SLOT: totalSynced, EXPECT: exists}
+
+# 3. Dvakrát výpadek a obnovení bez další akce
+- repeat:
+    times: 2
+    commands:
+      - runFlow:
+          file: ../../subflows/set-network-outage.yaml
+          env: {STATE: "on"}
+      - runFlow:
+          file: ../../subflows/set-network-outage.yaml
+          env: {STATE: "off"}
+      - runFlow: ../../subflows/wait-all-sent.yaml
+
+# 4. Počet záznamů ani součet se nesmí změnit.
+# Kdyby kopie přibyla se zpožděním, test na ni až 5 s počká (dnešek po clearState nemá jiné záznamy,
+# takže kopie by měla index 1). Když nepřibude, krok jen skončí varováním a test pokračuje.
+- tapOn:
+    id: "tab-timesheet"
+- extendedWaitUntil:
+    visible:
+      id: "entry-(?!delete-).+"
+      childOf:
+        id: "day-${output.todayIso}"
+      index: 1
+    timeout: 5000
+    optional: true
+    label: "Čekání na případnou kopii záznamu (varování = kopie nepřibyla, správně)"
+- runFlow:
+    file: ../../subflows/count-day-entries.yaml
+    env: {ISO: "${output.todayIso}", SLOT: after, EXPECT: exists}
+- takeScreenshot: o01-po-dvou-vypadcich
+- assertTrue:
+    condition: ${output.after == output.synced}
+    label: "Opakované obnovení sítě záznam nezdvojilo"
+- runFlow:
+    file: ../../subflows/capture-day-total.yaml
+    env: {ISO: "${output.todayIso}", SLOT: totalAfter, EXPECT: exists}
+- assertTrue:
+    condition: ${output.totalAfter == output.totalSynced}
+    label: "Denní součet dneška se nezměnil"

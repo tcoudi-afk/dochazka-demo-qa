@@ -1,0 +1,11 @@
+# Odhlášení přes Nastavení, čeká na přihlašovací obrazovku.
+appId: cz.demo.dochazka
+---
+- tapOn:
+    id: "tab-settings"
+- tapOn:
+    id: "btn-logout"
+- extendedWaitUntil:
+    visible:
+      id: "login-email"
+    timeout: 10000

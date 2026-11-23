@@ -1,0 +1,11 @@
+appId: cz.demo.dochazka
+name: "Rucni zaznam 06 - poznamka jen z mezer odmitnuta (bod 10)"
+tags:
+  - regression
+  - validace
+---
+- runScript: ../../scripts/dates.js
+- runFlow: ../../subflows/start-as-jan.yaml
+- runFlow:
+    file: ../../subflows/expect-manual-entry-error.yaml
+    env: {DATE: "${output.twoDaysAgo}", START: "17:00", END: "18:00", NOTE: "   ", TYPE: "Práce", ERR: ".*[Pp]oznámk.*", SHOT: "t06-poznamka-mezery"}

@@ -1,0 +1,19 @@
+# Vyplní ruční záznam, zkusí ho uložit a ověří, že aplikace zobrazí chybu.
+# Parametry: jako fill-manual-entry.yaml + ERR (regulární výraz pro text chyby), SHOT (název screenshotu)
+appId: cz.demo.dochazka
+---
+- runFlow:
+    file: fill-manual-entry.yaml
+    env:
+      DATE: ${DATE}
+      START: ${START}
+      END: ${END}
+      NOTE: ${NOTE}
+      TYPE: ${TYPE}
+- tapOn:
+    id: "manual-save"
+- takeScreenshot: ${SHOT}
+- assertVisible:
+    id: "manual-error"
+    text: ${ERR}
+    label: "Aplikace záznam odmítla a ukázala chybu"

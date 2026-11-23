@@ -1,0 +1,11 @@
+# Na Přehledu počká, až ukazatel synchronizace hlásí „Vše odesláno“.
+appId: cz.demo.dochazka
+---
+- tapOn:
+    id: "tab-overview"
+- extendedWaitUntil:
+    visible:
+      id: "sync-indicator"
+      text: "Vše odesláno"
+    timeout: 15000
+    label: "Ukazatel synchronizace hlásí Vše odesláno"

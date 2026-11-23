@@ -1,0 +1,29 @@
+# Otevře formulář nové žádosti a vyplní ho. Neodesílá.
+# Parametry: TYPE (Dovolená | Lékař | Home office), FROM, TO (DD.MM.RRRR)
+# Typ nemá vlastní testID, cílí se textem (RadioButton uvnitř request-type) a ověří se atributem checked.
+# Půlden se nezapíná (výchozí stav je vypnuto).
+appId: cz.demo.dochazka
+---
+- tapOn:
+    id: "tab-requests"
+- tapOn:
+    id: "btn-new-request"
+- extendedWaitUntil:
+    visible:
+      id: "request-from"
+    timeout: 10000
+- tapOn: ${TYPE}
+- assertVisible:
+    text: ${TYPE}
+    checked: true
+    label: "Typ žádosti je vybraný"
+- tapOn:
+    id: "request-from"
+- inputText: ${FROM}
+- tapOn:
+    id: "request-to"
+- inputText: ${TO}
+# Klávesnice se zavírá klepnutím na nadpis formuláře „Nová žádost“ (neinteraktivní text, klepnutí mimo pole ji v ScrollView zavře).
+# hideKeyboard na emulátoru selhával („Couldn't hide the keyboard“), viz tests/README.md, Pravidla.
+- tapOn:
+    text: "Nová žádost"

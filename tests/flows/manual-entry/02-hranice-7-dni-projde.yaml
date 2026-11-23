@@ -1,0 +1,17 @@
+appId: cz.demo.dochazka
+name: "Rucni zaznam 02 - 7 dni zpetne projde (bod 10)"
+tags:
+  - regression
+  - validace
+---
+- runScript: ../../scripts/dates.js
+- runFlow: ../../subflows/start-as-jan.yaml
+- runFlow:
+    file: ../../subflows/add-manual-entry.yaml
+    env: {DATE: "${output.sevenDaysAgo}", START: "17:00", END: "18:00", NOTE: "T02-7DNI", TYPE: "Práce"}
+- scrollUntilVisible:
+    element:
+      text: "T02-7DNI"
+    timeout: 15000
+    label: "Záznam 7 dní zpětně je ve Výkazu"
+- takeScreenshot: t02-7-dni-zpetne

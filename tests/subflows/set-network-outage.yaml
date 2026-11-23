@@ -1,0 +1,43 @@
+# Zapne nebo vypne simulovaný výpadek sítě v Nastavení a ověří stav přepínače.
+# Parametry: STATE (on | off)
+# Klepne jen tehdy, když přepínač není v požadované poloze, takže je jedno, v jakém stavu začíná.
+appId: cz.demo.dochazka
+---
+- tapOn:
+    id: "tab-settings"
+- extendedWaitUntil:
+    visible:
+      id: "toggle-network-outage"
+    timeout: 10000
+- runFlow:
+    when:
+      true: ${STATE == 'on'}
+    commands:
+      - runFlow:
+          when:
+            visible:
+              id: "toggle-network-outage"
+              checked: false
+          commands:
+            - tapOn:
+                id: "toggle-network-outage"
+      - assertVisible:
+          id: "toggle-network-outage"
+          checked: true
+          label: "Výpadek sítě je zapnutý"
+- runFlow:
+    when:
+      true: ${STATE == 'off'}
+    commands:
+      - runFlow:
+          when:
+            visible:
+              id: "toggle-network-outage"
+              checked: true
+          commands:
+            - tapOn:
+                id: "toggle-network-outage"
+      - assertVisible:
+          id: "toggle-network-outage"
+          checked: false
+          label: "Výpadek sítě je vypnutý"

@@ -1,0 +1,33 @@
+# Odešle vyplněný přihlašovací formulář a zaznamená výsledek:
+# screenshot SHOT, text login-error do output.lastError a řádek [LOGIN] do logu Maestra (console.log).
+# Přihlášení ani nepřihlášení neověřuje, to dělají expect-logged-in.yaml / expect-logged-out.yaml.
+# Parametry: SHOT (název screenshotu)
+# Začátek blokace: první pokus, jehož hláška obsahuje „zablokované“ (text z běhu 22. 11. 20:30:
+# „Přihlášení je na 1 minutu zablokované.“). Čas jeho odeslání se uloží do output.blockedAt,
+# pokud test blokaci ještě nezaznamenal (output.blockedAt = 0). Do logu se pak píše počet sekund od něj.
+appId: cz.demo.dochazka
+---
+- tapOn:
+    id: "login-submit"
+- evalScript: ${output.lastSubmitAt = Date.now()}
+- evalScript: ${output.lastError = ''}
+# ZÁMĚRNÉ ČEKÁNÍ na výsledek pokusu, nejvýš 5 s: skončí, jakmile je vidět chybová hláška
+# nebo tab po přihlášení. Když není vidět nic, vyprší a skončí jen varováním.
+- extendedWaitUntil:
+    visible:
+      id: "login-error|tab-overview|tab-approvals"
+    timeout: 5000
+    optional: true
+    label: "Čekání na výsledek přihlášení, max 5 s (varování = není vidět hláška ani tab)"
+- takeScreenshot: ${SHOT}
+- runFlow:
+    when:
+      visible:
+        id: "login-error"
+    commands:
+      - copyTextFrom:
+          id: "login-error"
+      - evalScript: ${output.lastError = maestro.copiedText}
+# Hodnoty jsou v uvozovkách, protože obsahují ": " (jinak chyba YAML).
+- evalScript: "${output.blockedAt = (!output.blockedAt && output.lastError.indexOf('zablokované') >= 0) ? output.lastSubmitAt : output.blockedAt}"
+- evalScript: "${console.log('[LOGIN] ' + SHOT + (output.blockedAt ? ' | ' + Math.round((output.lastSubmitAt - output.blockedAt) / 1000) + ' s od začátku blokace' : '') + ' | ' + (output.lastError ? 'login-error = ' + output.lastError : 'login-error není vidět'))}"

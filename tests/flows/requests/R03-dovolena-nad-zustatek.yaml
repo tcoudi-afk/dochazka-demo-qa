@@ -1,0 +1,31 @@
+appId: cz.demo.dochazka
+name: "Zadosti R03 - zadost nad zustatek se neodesle (BUG-016)"
+tags:
+  - regression
+  - zadosti
+  - known-bug
+---
+- runScript: ../../scripts/dates.js
+# Na verzi 1.0 selže: žádost se odešle a zůstatek jde do minusu (BUG-016).
+# Hlídá jen BUG-016: 10 pracovních dní je víc než zůstatek, i když se víkend nepočítá.
+# Kdyby se počítal (BUG-017), je to 12 dní, pořád víc než zůstatek.
+- assertTrue:
+    condition: ${output.vacTwoWeeksFrom !== null && output.vacTwoWeeksWorkdays == 10}
+    label: "Letos jsou ještě dva celé týdny Po–Pá bez svátků"
+- runFlow: ../../subflows/start-as-jan.yaml
+- runFlow:
+    file: ../../subflows/capture-balance.yaml
+    env: {SLOT: before}
+- assertTrue:
+    condition: ${output.before < output.vacTwoWeeksWorkdays}
+    label: "Předpoklad testu: zůstatek je menší než 10 dní"
+- runFlow:
+    file: ../../subflows/expect-request-error.yaml
+    env: {TYPE: "Dovolená", FROM: "${output.vacTwoWeeksFrom}", TO: "${output.vacTwoWeeksTo}"}
+- runFlow:
+    file: ../../subflows/capture-balance.yaml
+    env: {SLOT: after}
+- takeScreenshot: r03-zustatek
+- assertTrue:
+    condition: ${output.after == output.before}
+    label: "Zůstatek se nezměnil"

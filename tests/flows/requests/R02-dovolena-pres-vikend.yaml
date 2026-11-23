@@ -1,0 +1,26 @@
+appId: cz.demo.dochazka
+name: "Zadosti R02 - dovolena pres vikend odecte jen pracovni dny (BUG-017)"
+tags:
+  - regression
+  - zadosti
+  - known-bug
+---
+- runScript: ../../scripts/dates.js
+# Na verzi 1.0 selže: odečítají se i víkendy, 6 dní místo 4 (BUG-017).
+- assertTrue:
+    condition: ${output.vacWeekendFrom !== null && output.vacWeekendWorkdays == 4}
+    label: "Letos je ještě rozsah středa až pondělí bez svátků"
+- runFlow: ../../subflows/start-as-jan.yaml
+- runFlow:
+    file: ../../subflows/capture-balance.yaml
+    env: {SLOT: before}
+- runFlow:
+    file: ../../subflows/submit-request.yaml
+    env: {TYPE: "Dovolená", FROM: "${output.vacWeekendFrom}", TO: "${output.vacWeekendTo}"}
+- runFlow:
+    file: ../../subflows/capture-balance.yaml
+    env: {SLOT: after}
+- takeScreenshot: r02-zustatek
+- assertTrue:
+    condition: ${output.after - output.before == -4}
+    label: "Odečetly se jen 4 pracovní dny, víkend ne"

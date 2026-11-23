@@ -1,0 +1,23 @@
+# Pracovní soubory, které do veřejného repa nepatří
+/CLAUDE.md
+/docs/souhrn-pro-novy-chat.md
+# Starý export tabulky chyb (nahradí ho nový export)
+/docs/Docházka Demo – nalezené chyby.xlsx
+
+# Velké výstupy Maestra ve všech bězích
+device-logcat.txt
+commands.json
+
+# Běhy testů: v repu zůstává poslední úplný běh a běhy, na které odkazují dokumenty
+/docs/test-runs/posledni/*
+!/docs/test-runs/posledni/2026-11-22_180146/
+!/docs/test-runs/posledni/2026-11-22_203010/
+!/docs/test-runs/posledni/2026-11-22_211301/
+!/docs/test-runs/posledni/2026-11-22_214207/
+!/docs/test-runs/posledni/2026-11-23_085408/
+!/docs/test-runs/posledni/2026-11-23_090519/
+!/docs/test-runs/posledni/2026-11-23_094739/
+
+# Pracovní souhrny a interní review
+/docs/souhrn-pro-novy-chat*.md
+/docs/review-jazyk.md

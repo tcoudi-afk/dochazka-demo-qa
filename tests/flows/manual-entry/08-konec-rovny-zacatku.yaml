@@ -1,0 +1,18 @@
+appId: cz.demo.dochazka
+name: "Rucni zaznam 08 - konec rovny zacatku projde (predpoklad, bod 11)"
+tags:
+  - regression
+  - validace
+---
+- runScript: ../../scripts/dates.js
+- runFlow: ../../subflows/start-as-jan.yaml
+# Bod 11 zakazuje jen konec DŘÍV než začátek. Rovnost je podle našeho předpokladu povolená.
+- runFlow:
+    file: ../../subflows/add-manual-entry.yaml
+    env: {DATE: "${output.twoDaysAgo}", START: "17:00", END: "17:00", NOTE: "T08-NULA", TYPE: "Práce"}
+- scrollUntilVisible:
+    element:
+      text: "T08-NULA"
+    timeout: 15000
+    label: "Záznam s nulovou délkou je ve Výkazu"
+- takeScreenshot: t08-konec-rovny-zacatku

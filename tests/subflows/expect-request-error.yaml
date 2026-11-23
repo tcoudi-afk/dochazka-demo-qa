@@ -1,0 +1,25 @@
+# Vyplní žádost, zkusí ji odeslat a ověří, že ji aplikace odmítla: chyba je vidět a žádost nevznikla.
+# Parametry: jako fill-request.yaml
+appId: cz.demo.dochazka
+---
+- runFlow:
+    file: fill-request.yaml
+    env:
+      TYPE: ${TYPE}
+      FROM: ${FROM}
+      TO: ${TO}
+- tapOn:
+    id: "request-submit"
+- assertVisible:
+    id: "request-error"
+    text: ".+"
+    label: "Aplikace žádost odmítla a ukázala chybu"
+- tapOn:
+    id: "tab-requests"
+- extendedWaitUntil:
+    visible:
+      id: "vacation-balance"
+    timeout: 10000
+- assertNotVisible:
+    id: "request-state-.*"
+    label: "Žádná žádost nevznikla"

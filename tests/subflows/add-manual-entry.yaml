@@ -1,0 +1,18 @@
+# Přidá ruční záznam a počká na návrat do Výkazu. Pokud ho aplikace odmítne, krok selže na timeoutu.
+# Parametry: DATE, START, END, NOTE, TYPE (viz fill-manual-entry.yaml)
+appId: cz.demo.dochazka
+---
+- runFlow:
+    file: fill-manual-entry.yaml
+    env:
+      DATE: ${DATE}
+      START: ${START}
+      END: ${END}
+      NOTE: ${NOTE}
+      TYPE: ${TYPE}
+- tapOn:
+    id: "manual-save"
+- extendedWaitUntil:
+    visible:
+      id: "btn-manual-entry"
+    timeout: 10000

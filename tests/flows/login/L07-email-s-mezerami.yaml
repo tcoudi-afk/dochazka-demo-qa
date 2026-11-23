@@ -1,0 +1,13 @@
+appId: cz.demo.dochazka
+name: "Login L07 - e-mail s mezerou na zacatku a konci se prihlasi (bod 1, vlastni predpoklad)"
+tags:
+  - login
+---
+# Vlastní předpoklad, nízká priorita: mezery kolem e-mailu aplikace ořízne.
+- launchApp:
+    clearState: true
+- evalScript: ${output.blockedAt = 0}
+- runFlow:
+    file: ../../subflows/login-attempt.yaml
+    env: {EMAIL: " jan.novak@demo.cz ", PASSWORD: "Demo2026!", SHOT: "l07-email-s-mezerami"}
+- runFlow: ../../subflows/expect-logged-in.yaml

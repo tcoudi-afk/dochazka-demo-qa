@@ -1,0 +1,99 @@
+# Diagnostika BUG-007: jsou záznamy docházky oddělené mezi uživateli? (spec. bod 3)
+#
+# Flow doběhne celý, i když najde chybu. Kontroly, které chybu odhalují, jsou označené
+# jako "optional": jejich selhání se ve výstupu ukáže jako varování (⚠️) s popiskem.
+# Jak číst výsledek: viz README v tests/.
+appId: cz.demo.dochazka
+name: "BUG-007 diagnostika - oddeleni zaznamu Jan a Eva"
+---
+- runScript: ../scripts/dates.js
+- launchApp:
+    clearState: true
+
+# --- 1. Jan vytvoří záznam ---
+- runFlow:
+    file: ../subflows/login.yaml
+    env:
+      EMAIL: "jan.novak@demo.cz"
+      PASSWORD: "Demo2026!"
+- runFlow:
+    file: ../subflows/add-manual-entry.yaml
+    env:
+      DATE: ${output.twoDaysAgo}
+      START: "07:00"
+      END: "08:00"
+      NOTE: "ZAZNAM-JAN"
+      TYPE: "Práce"
+- scrollUntilVisible:
+    element:
+      text: "ZAZNAM-JAN"
+    timeout: 15000
+    label: "Krok 1: Jan vidí svůj nový záznam ZAZNAM-JAN"
+- takeScreenshot: bug007-1-jan-po-ulozeni
+- runFlow: ../subflows/logout.yaml
+
+# --- 2. Eva nesmí vidět záznam Jana ---
+- runFlow:
+    file: ../subflows/login.yaml
+    env:
+      EMAIL: "eva.svobodova@demo.cz"
+      PASSWORD: "Demo2026!"
+- tapOn:
+    id: "tab-timesheet"
+- takeScreenshot: bug007-2-eva-vykaz-pred
+- scrollUntilVisible:
+    element:
+      text: "ZAZNAM-JAN"
+    timeout: 10000
+    optional: true
+    label: "Krok 2a: hledám ZAZNAM-JAN u Evy (varování = nenalezeno = SPRÁVNĚ)"
+- assertNotVisible:
+    text: "ZAZNAM-JAN"
+    optional: true
+    label: "Krok 2b: Eva NEVIDÍ záznam Jana (varování = CHYBA, bod 3)"
+- takeScreenshot: bug007-2-eva-hledani-jan
+
+# --- 3. Eva vytvoří vlastní záznam ---
+- runFlow:
+    file: ../subflows/add-manual-entry.yaml
+    env:
+      DATE: ${output.twoDaysAgo}
+      START: "09:00"
+      END: "10:00"
+      NOTE: "ZAZNAM-EVA"
+      TYPE: "Práce"
+- scrollUntilVisible:
+    element:
+      text: "ZAZNAM-EVA"
+    timeout: 15000
+    label: "Krok 3: Eva vidí svůj nový záznam ZAZNAM-EVA"
+- takeScreenshot: bug007-3-eva-po-ulozeni
+- runFlow: ../subflows/logout.yaml
+
+# --- 4. Jan musí mít svůj záznam a nesmí vidět záznam Evy ---
+- runFlow:
+    file: ../subflows/login.yaml
+    env:
+      EMAIL: "jan.novak@demo.cz"
+      PASSWORD: "Demo2026!"
+- tapOn:
+    id: "tab-timesheet"
+- takeScreenshot: bug007-4-jan-vykaz-pred
+- scrollUntilVisible:
+    element:
+      text: "ZAZNAM-JAN"
+    timeout: 15000
+    optional: true
+    label: "Krok 4a: Jan má pořád svůj ZAZNAM-JAN (varování = CHYBA, ztráta dat)"
+- takeScreenshot: bug007-4-jan-vlastni-zaznam
+- scrollUntilVisible:
+    element:
+      text: "ZAZNAM-EVA"
+    timeout: 10000
+    optional: true
+    label: "Krok 4b: hledám ZAZNAM-EVA u Jana (varování = nenalezeno = SPRÁVNĚ)"
+- assertNotVisible:
+    text: "ZAZNAM-EVA"
+    optional: true
+    label: "Krok 4c: Jan NEVIDÍ záznam Evy (varování = CHYBA, bod 3)"
+- takeScreenshot: bug007-4-jan-hledani-eva

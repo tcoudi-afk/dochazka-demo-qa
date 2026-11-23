@@ -1,0 +1,25 @@
+# Přečte zůstatek dovolené na záložce Žádosti a uloží ho jako celé číslo dní do output[SLOT].
+# Parametry: SLOT
+# Text "Zbývá dovolené: 8 dní" převádí scripts/parse-balance.js. Když prvek chybí nebo text nejde
+# převést, krok selže. Nikdy se tiše nepočítá s nulou.
+appId: cz.demo.dochazka
+---
+- evalScript: ${output[SLOT] = null}
+- tapOn:
+    id: "tab-requests"
+- extendedWaitUntil:
+    visible:
+      id: "vacation-balance"
+    timeout: 10000
+- copyTextFrom:
+    id: "vacation-balance"
+- runScript:
+    file: ../scripts/parse-balance.js
+    env:
+      SLOT: ${SLOT}
+- assertTrue:
+    condition: ${output[SLOT] !== null}
+    label: "Zůstatek dovolené jde přečíst ve tvaru <číslo> den/dny/dní"
+- assertTrue:
+    condition: ${typeof output[SLOT] == 'number'}
+    label: "Zůstatek dovolené je uložený jako číslo"

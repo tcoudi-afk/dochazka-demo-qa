@@ -1,0 +1,15 @@
+appId: cz.demo.dochazka
+name: "Login L06 - e-mail velkymi pismeny se prihlasi (bod 1, BUG-023)"
+tags:
+  - login
+  - known-bug
+---
+# known-bug BUG-023: bod 1 říká, že u e-mailu nezáleží na velkých a malých písmenech.
+# Na 1.0 aplikace odpoví „Nesprávný e-mail nebo heslo.“ (běh 22. 11. 20:30) a test selže na „Přihlášen“.
+- launchApp:
+    clearState: true
+- evalScript: ${output.blockedAt = 0}
+- runFlow:
+    file: ../../subflows/login-attempt.yaml
+    env: {EMAIL: "JAN.NOVAK@DEMO.CZ", PASSWORD: "Demo2026!", SHOT: "l06-email-velkymi"}
+- runFlow: ../../subflows/expect-logged-in.yaml
