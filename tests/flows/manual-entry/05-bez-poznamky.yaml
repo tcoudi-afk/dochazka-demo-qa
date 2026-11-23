@@ -7,5 +7,17 @@ tags:
 - runScript: ../../scripts/dates.js
 - runFlow: ../../subflows/start-as-jan.yaml
 - runFlow:
-    file: ../../subflows/expect-manual-entry-error.yaml
-    env: {DATE: "${output.twoDaysAgo}", START: "17:00", END: "18:00", NOTE: "NONE", TYPE: "Práce", ERR: ".*[Pp]oznámk.*", SHOT: "t05-bez-poznamky"}
+    file: ../../subflows/fill-manual-entry.yaml
+    env: {DATE: "${output.twoDaysAgo}", START: "17:00", END: "18:00", NOTE: "NONE", TYPE: "Práce"}
+# Bez poznámky zavírá klávesnici jen klepnutí na nadpis formuláře a to v CI (GitHub Actions, API 35)
+# klávesnici nezavře, Uložit zůstane pod ní. Klepnutí na popisek „Typ“ ji zavře, stejně jako
+# v ostatních testech po vyplnění poznámky.
+- tapOn:
+    text: "Typ"
+- tapOn:
+    id: "manual-save"
+- takeScreenshot: t05-bez-poznamky
+- assertVisible:
+    id: "manual-error"
+    text: ".*[Pp]oznámk.*"
+    label: "Aplikace záznam odmítla a ukázala chybu"
