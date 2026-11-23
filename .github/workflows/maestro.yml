@@ -1,7 +1,9 @@
 # Maestro regresní testy Docházka Demo na Android emulátoru.
 #
-# POZOR: KONCEPT. Tento workflow nebyl spuštěn ani ověřen. Testy byly zatím spouštěné jen lokálně
-# na Windows (emulátor Pixel 7, API 35). Před použitím ho je potřeba pustit a doladit.
+# Běžel 23. 11. dvakrát (podrobnosti v tests/README.md, sekce 6): první běh 45153010088 (dva pokusy)
+# byl červený kvůli testu 05 (klávesnice zakryla Uložit), po opravě testu běh 45178523665 zelený.
+# Výsledek odpovídá lokálnímu běhu. Vyhodnocení known-bug je jednoduché: nerozliší selhání na očekávané
+# kontrole od výpadku emulátoru („device offline“). Lokálně testy běží na Windows (Pixel 7, API 35).
 #
 # Co dělá:
 #   1. Java 17, Maestro 2.12.1, APK z releases repozitáře aplikace
