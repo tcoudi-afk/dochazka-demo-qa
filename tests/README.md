@@ -346,6 +346,9 @@ Workflow je v `.github/workflows/maestro.yml`. První běhy 23. 11. odpovídají
   „Typ“ (commit `2588cdd`).
 - [45178523665](https://github.com/tcoudi-afk/dochazka-demo-qa/actions/runs/45178523665) po opravě: build zelený, všech 16 testů bez `known-bug` prošlo, všech
   10 `known-bug` testů selhalo.
+- [45184593533](https://github.com/tcoudi-afk/dochazka-demo-qa/actions/runs/45184593533) po commitu `c7f2442`
+  (změna jen v README): build červený kvůli opakovaným výpadkům emulátoru na runneru („device offline“), regresní
+  testy 01a, 04, 06, 08, 09 a L03 selhaly bez souvislosti s aplikací.
 
 Vyhodnocení `known-bug` je jednoduché: běh zaznamená jen to, že test selhal, ne na kterém kroku. Selhání na
 očekávané kontrole se tak nerozliší od selhání z jiného důvodu, například výpadku emulátoru. Emulátor na runneru
