@@ -339,7 +339,19 @@ Poslední běhy jsou v tabulce v sekci 1, starší výstupy v `docs/test-runs/po
 
 ## 6. CI (GitHub Actions)
 
-Návrh je v `.github/workflows/maestro.yml`. **Workflow nebyl spuštěn ani ověřen**, je to koncept.
+Workflow je v `.github/workflows/maestro.yml`. První běhy 23. 11. odpovídají lokálnímu výsledku:
+
+- [45153010088](https://github.com/tcoudi-afk/dochazka-demo-qa/actions/runs/45153010088) (dva pokusy): build červený kvůli testu 05. V CI klepnutí na nadpis
+  formuláře nezavřelo klávesnici a tlačítko Uložit zůstalo pod ní. Test 05 nově před uložením klepne na popisek
+  „Typ“ (commit `2588cdd`).
+- [45178523665](https://github.com/tcoudi-afk/dochazka-demo-qa/actions/runs/45178523665) po opravě: build zelený, všech 16 testů bez `known-bug` prošlo, všech
+  10 `known-bug` testů selhalo.
+
+Vyhodnocení `known-bug` je jednoduché: běh zaznamená jen to, že test selhal, ne na kterém kroku. Selhání na
+očekávané kontrole se tak nerozliší od selhání z jiného důvodu, například výpadku emulátoru. Emulátor na runneru
+v každém pokusu aspoň jednou ohlásil `device offline` a test pak selhal během několika sekund. V druhém pokusu
+prvního běhu takhle selhal R02 a kontrolu BUG-017 neověřil, v posledním běhu stejně R03 a L01. V prvním pokusu
+selhal na výpadku i test 03 (bez `known-bug`), v druhém prošel. Dál viz review (K1, CI1–CI6) v sekci 7.
 
 Jak má běžet:
 
@@ -420,4 +432,5 @@ Plné znění je v [`docs/review-testu.md`](../docs/review-testu.md), nejdůlež
   | 2a / 2b | 2a ⚠️, 2b ✅ | 2a ✅, 2b ⚠️: Eva vidí záznam Jana |
   | 4a | ✅ | ⚠️: Janovi zmizel vlastní záznam |
   | 4b / 4c | 4b ⚠️, 4c ✅ | 4b ✅, 4c ⚠️: Jan vidí záznam Evy |
-- **Workflow pro GitHub Actions** (`.github/workflows/maestro.yml`) – neověřený koncept.
+- **Workflow pro GitHub Actions** (`.github/workflows/maestro.yml`) – první běhy 23. 11. odpovídají lokálnímu
+  výsledku, vyhodnocení `known-bug` je jednoduché (sekce 6).

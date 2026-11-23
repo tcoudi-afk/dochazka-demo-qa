@@ -56,5 +56,6 @@ k testům, poznámky. Nad doporučený čas a označené jako rozšíření:
 - sonda obrazovek ([`tools/probe/`](tools/probe/)): projde obrazovky ve všech rolích a jazycích a uloží strom UI,
   výstup sloužil jako seznam kandidátů na chyby, které jsem pak ověřoval ručně,
 - CI workflow pro GitHub Actions ([`.github/workflows/maestro.yml`](.github/workflows/maestro.yml)):
-  neověřený koncept, nikdy neběžel,
+  první běhy 23. 11. odpovídají lokálnímu výsledku, vyhodnocení `known-bug` je jednoduché (nerozliší
+  selhání na očekávané kontrole od výpadku emulátoru), podrobnosti v [`tests/README.md`](tests/README.md), sekce 6,
 - matice pokrytí specifikace a review testů samostatnou instancí AI.
