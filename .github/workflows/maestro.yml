@@ -1,6 +1,6 @@
 # Maestro regresní testy Docházka Demo na Android emulátoru.
 #
-# Běžel 23. 11. dvakrát (podrobnosti v tests/README.md, sekce 6): první běh 45153010088 (dva pokusy)
+# Výsledky běhů viz tests/README.md, sekce 6. První běh 45153010088 (dva pokusy)
 # byl červený kvůli testu 05 (klávesnice zakryla Uložit), po opravě testu běh 45178523665 zelený.
 # Výsledek odpovídá lokálnímu běhu. Vyhodnocení known-bug je jednoduché: nerozliší selhání na očekávané
 # kontrole od výpadku emulátoru („device offline“). Lokálně testy běží na Windows (Pixel 7, API 35).
