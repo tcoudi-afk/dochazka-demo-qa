@@ -1,0 +1,16 @@
+{
+  "_poznamka": "Ocekavane selhani testu na verzi 1.0 (tag known-bug). Klic = ID testu (zacatek nazvu souboru), hodnota = nahlasena chyba. Pouziva run-all.ps1 k trideni. Menit jen po rozhodnuti cloveka, ne automaticky.",
+  "verze": "1.0",
+  "tests": {
+    "01b": "BUG-012",
+    "07": "BUG-014",
+    "10": "BUG-015",
+    "11": "BUG-009",
+    "R02": "BUG-017",
+    "R03": "BUG-016",
+    "L01": "BUG-022",
+    "L04": "BUG-022",
+    "L06": "BUG-023",
+    "O01": "BUG-021"
+  }
+}
